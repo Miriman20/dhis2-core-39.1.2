@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+    <workbook>
+
+        <worksheet idx="5">
+        <section startRow="4" endRow="4">
+        </section>
+            <loop startRow="4" endRow="4" items="metaobject.values" var="valueholder" varType="org.hisp.dhis.pbf.impex.ValueHolder">
+                <section startRow="4" endRow="4">
+                <mapping row="4" col="4">valueholder.atrcatcomboid</mapping>
+                <mapping row="4" col="5">valueholder.dataelementid</mapping>
+                <mapping row="4" col="6">valueholder.catcomboid1</mapping>
+                <mapping row="4" col="7">valueholder.catcomboid2</mapping>
+                <mapping row="4" col="8">valueholder.catcomboid3</mapping>
+                <mapping row="4" col="9">valueholder.catcomboid4</mapping>
+                <mapping row="4" col="10">valueholder.catcomboid5</mapping>
+                <mapping row="4" col="11">valueholder.catcomboid6</mapping>
+                <mapping row="4" col="15">valueholder.comment</mapping>
+                <mapping row="4" col="22">valueholder.datavalue1</mapping>
+                <mapping row="4" col="23">valueholder.datavalue2</mapping>
+                <mapping row="4" col="24">valueholder.datavalue3</mapping>
+                <mapping row="4" col="25">valueholder.datavalue4</mapping>
+                <mapping row="4" col="26">valueholder.datavalue5</mapping>
+                <mapping row="4" col="27">valueholder.datavalue6</mapping>                
+                </section>
+                <loopbreakcondition>
+                    <rowcheck offset="0">
+                        <cellcheck offset="0">END</cellcheck>
+                    </rowcheck>
+                </loopbreakcondition>
+            </loop> 
+        </worksheet>
+        
+        
+    </workbook>

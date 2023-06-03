@@ -1,0 +1,29 @@
+[
+#foreach( $pbfCalculation in $pbfCalculations )
+
+#if($memberCount==$foreach.count)
+  {
+    "Мамлакат": "$!{pbfCalculation.getCountryName()}",
+    "Вилоят": "$!{pbfCalculation.getProvinceName()}",
+	"Ноҳия": "$!{pbfCalculation.getDistrictName()}",
+	"Муассиса": "$!{pbfCalculation.getFacilityName()}",
+	"Нишондиҳанда": "Арзиш",
+	"Чоряк": "$!{pbfCalculation.getPeriodName()}",
+	"Ҳамагӣ балҳои гирифташуда": "$!{pbfCalculation.getTotalQualityScore()}",
+	"Ҳамагӣ балҳои сифат": $!{pbfCalculation.getQualityScore()}
+  }
+#else 
+  {
+    "Мамлакат": "$!{pbfCalculation.getCountryName()}",
+    "Вилоят": "$!{pbfCalculation.getProvinceName()}",
+	"Ноҳия": "$!{pbfCalculation.getDistrictName()}",
+	"Муассиса": "$!{pbfCalculation.getFacilityName()}",
+	"Нишондиҳанда": "Арзиш",
+	"Чоряк": "$!{pbfCalculation.getPeriodName()}",
+	"Ҳамагӣ балҳои гирифташуда": "$!{pbfCalculation.getTotalQualityScore()}",
+	"Ҳамагӣ балҳои сифат": $!{pbfCalculation.getQualityScore()}
+  },
+#end
+  
+#end
+]

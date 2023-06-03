@@ -18,6 +18,13 @@
     <module>dhis-web-dataentry</module>
     <module>dhis-web-portal</module>
     <module>dhis-web-apps</module>
+
+<module>dhis-web-pbf-analytics</module>
+
+    <!-- PBF >
+    <module>dhis-web-pbf</module>
+    
+    <module>dhis-web-maintenance-pbf</module-->
   </modules>
 
   <profiles>

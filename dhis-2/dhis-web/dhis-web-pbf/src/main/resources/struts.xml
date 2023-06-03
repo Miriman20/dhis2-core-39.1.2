@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+  "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+  "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+	<include file="dhis-web-commons.xml" />
+
+	<package name="dhis-web-pbf" extends="dhis-web-commons"
+		namespace="/dhis-web-pbf">
+
+
+<!-- XDocx -->
+		<result-types>
+			<!-- XDocReport Result Type with Action which must implement PopulateContextAware 
+				to populate context -->
+			<result-type name="xdocreport"
+				class="org.apache.struts2.views.xdocreport.XDocReportResult" />
+			<!-- XDocReport Result Type with lazy method to populate context -->
+			<result-type name="lazy-xdocreport"
+				class="org.apache.struts2.views.xdocreport.LazyXDocReportResult" />
+			<!-- XDocReport Result Type which use commons-beanutils.jar (PropertyUtils) 
+				to populate context -->
+			<result-type name="lazy-commons-beanutils-xdocreport"
+				class="org.apache.struts2.views.xdocreport.LazyCommonsBeanUtilsXDocReportResult" />
+		<result-type name="voidResponse"
+				class="org.apache.struts2.views.xdocreport.JobExecutionResult" />				
+		</result-types>
+
+<!-- Index -->
+		<action name="index" class="org.hisp.dhis.pbf.action.NoAction">
+			<result name="success" type="velocity">/main.vm</result>
+			<param name="page">/dhis-web-pbf/index.vm</param>
+			<param name="menu">/dhis-web-pbf/menu.vm</param>
+		</action>
+
+
+
+    <!-- Data value import -->
+
+    <action name="displayImportDataValueForm" class="org.hisp.dhis.pbf.action.NoAction">
+      <result name="success" type="velocity">/main.vm</result>
+      <param name="page">/dhis-web-pbf/impex/importDataValue.vm</param>
+      <param name="menu">/dhis-web-pbf/menu.vm</param>
+      <param name="javascripts">javascript/importDataValue.js</param>
+      <param name="requiredAuthorities">F_IMPORT_DATA</param>
+    </action>
+
+    <action name="importDataValue" class="org.hisp.dhis.pbf.impex.ImportDataValueAction">
+      <result name="success" type="redirect">displayImportDataValueForm.action</result>
+      <interceptor-ref name="fileUploadStack" />
+      <param name="requiredAuthorities">F_IMPORT_DATA</param>
+    </action>
+		
+<!-- Docx Reports <param name="location">#action.docFullPass changed to /docx/paymentRequest.docx</param> -->
+  <action name="displayPbfCalcsReport" class="org.hisp.dhis.pbf.docx.DisplayPbfCalcsReport">
+    <result name="success" type="xdocreport">
+    <param name="location">/docx/paymentRequest.docx</param>
+    <param name="templateEngine">Velocity</param>
+    <param name="trackLastModified">true</param>
+    <param name="fieldAsList">quantityIndicators.SortOrder,quantityIndicators.IndicatorName,quantityIndicators.FacilityQuarterValue,quantityIndicators.QuarterValueOrig,quantityIndicators.BasisValue,quantityIndicators.ThresholdValue,quantityIndicators.UnitPrice,quantityIndicators.StringQuarterAmount,quantityIndicators.TotalAmountWithDiscount,quantityIndicators.DiscountRate,quantityIndicators.StoredBy,quantityIndicators.StringQuarterValue,quantityIndicators.StringDiffQuarterValue,quantityIndicators.TotalQualityScore,quantityIndicators.QualityScore</param>
+    </result>
+  </action>
+
+		
+<!-- Excel Reports -->
+<!-- Control report -->
+		 <action name="showControlReportParamsForm" class="org.hisp.dhis.pbf.excelreports.GetControlReportParamsAction">
+		      <result name="success" type="velocity">/main.vm</result>
+		      <param name="page">/dhis-web-pbf/reps/controlReportParamsForm.vm</param>
+		      <param name="menu">/dhis-web-pbf/submenu.vm</param>
+		      <param name="javascripts">../dhis-web-commons/oust/oust.js,../dhis-web-commons/oust/selectionTreeSelect.js,javascript/dataSetReport.js</param>
+		      <param name="stylesheets"></param>
+	    </action>
+
+    <action name="produceControlReport" class="org.hisp.dhis.pbf.excelreports.ProduceControlReportAction">
+      	<result name="success" type="stream">
+			  <param name="contentType">application/vnd.ms-excel</param>
+			  <param name="inputName">fileInputStream</param>
+			  <param name="contentDisposition">attachment;filename=${fileName}</param>
+			  <param name="bufferSize">1024</param>
+		</result>
+    </action>
+
+		 <action name="showCalculationsReportParamsForm" class="org.hisp.dhis.pbf.excelreports.GetControlReportParamsAction">
+		      <result name="success" type="velocity">/main.vm</result>
+		      <param name="page">/dhis-web-pbf/reps/calculationsReportParamsForm.vm</param>
+		      <param name="menu">/dhis-web-pbf/submenu.vm</param>
+		      <param name="javascripts">../dhis-web-commons/oust/oust.js,../dhis-web-commons/oust/selectionTreeSelect.js,javascript/dataSetReport.js</param>
+		      <param name="stylesheets"></param>
+	    </action>
+	    
+    <action name="produceCalculationsReport" class="org.hisp.dhis.pbf.excelreports.ProduceCalculationsReportAction">
+      	<result name="success" type="stream">
+			  <param name="contentType">application/vnd.ms-excel</param>
+			  <param name="inputName">fileInputStream</param>
+			  <param name="contentDisposition">attachment;filename=${fileName}</param>
+			  <param name="bufferSize">1024</param>
+		</result>
+    </action>
+    
+<!-- Summary -->
+		 <action name="showQuarterlySummaryReportParamsForm" class="org.hisp.dhis.pbf.excelreports.GetQuarterlySummaryReportParamsAction">
+		      <result name="success" type="velocity">/main.vm</result>
+		      <param name="page">/dhis-web-pbf/reps/quarterlySummaryReportParamsForm.vm</param>
+		      <param name="menu">/dhis-web-pbf/submenu.vm</param>
+		      <param name="javascripts">../dhis-web-commons/oust/oust.js,../dhis-web-commons/oust/selectionTreeSelect.js,javascript/dataSetReport.js</param>
+		      <param name="stylesheets"></param>
+	    </action>
+
+    <action name="produceQuarterlySummaryReport" class="org.hisp.dhis.pbf.excelreports.ProduceQuarterlySummaryReportAction">
+      	<result name="success" type="stream">
+			  <param name="contentType">application/vnd.ms-excel</param>
+			  <param name="inputName">fileInputStream</param>
+			  <param name="contentDisposition">attachment;filename=${fileName}</param>
+			  <param name="bufferSize">1024</param>
+		</result>
+    </action>
+      		      		
+		<!-- PBF -->
+		<!-- report period -->
+
+		<action name="showReportPeriod"
+			class="org.hisp.dhis.pbf.reportperiod.ShowReportPeriodAction">
+			<result name="success" type="velocity">/main.vm</result>
+			<param name="menu">/dhis-web-pbf/menu.vm</param>
+			<param name="page">/dhis-web-pbf/reportperiod/reportPeriod.vm</param>
+			<param name="javascripts">
+				javascript/dataElementGroup.js
+			</param>
+			<param name="stylesheets">style/styles.css</param>
+			<param name="requiredAuthorities">F_SHOW_PERIOD</param>
+		</action>
+
+		<action name="showAddReportPeriod"
+			class="org.hisp.dhis.pbf.reportperiod.ShowAddReportPeriodAction">
+			<result name="success" type="velocity">/main.vm</result>
+			<param name="menu">/dhis-web-pbf/menu.vm</param>
+			<param name="page">/dhis-web-pbf/reportperiod/addReportPeriod.vm</param>
+			<param name="javascripts">
+				javascript/dataSetReport.js,
+				javascript/jquery.bvalidator.js,
+				javascript/xregexp-all-min.js
+			</param>
+			<param name="stylesheets">style/styles.css,
+				style/bvalidator.css,style/themes/bvalidator.theme.postit.css</param>
+			<param name="requiredAuthorities">F_ADD_PERIOD</param>	
+		</action>
+
+		<action name="showUpdateReportPeriod"
+			class="org.hisp.dhis.pbf.reportperiod.ShowUpdateReportPeriodAction">
+			<result name="success" type="velocity">/main.vm</result>
+			<param name="menu">/dhis-web-pbf/menu.vm</param>
+			<param name="page">/dhis-web-pbf/reportperiod/updateReportPeriod.vm</param>
+			<param name="javascripts">
+				javascript/dataElementGroup.js
+			</param>
+			<param name="stylesheets">style/styles.css</param>
+			<param name="requiredAuthorities">F_UPDATE_PERIOD</param>
+		</action>
+
+		<action name="addReportPeriod"
+			class="org.hisp.dhis.pbf.reportperiod.AddReportPeriodAction">
+			<result name="success" type="redirect">showReportPeriod.action</result>
+		</action>
+
+		<action name="updateReportPeriod"
+			class="org.hisp.dhis.pbf.reportperiod.UpdateReportPeriodAction">
+			<result name="success" type="redirect">showReportPeriod.action</result>
+		</action>
+
+		<action name="deleteReportPeriod"
+			class="org.hisp.dhis.pbf.reportperiod.DeleteReportPeriodAction">
+			<result name="success" type="redirect">showReportPeriod.action</result>
+		</action>
+
+		<!-- Calculations -->
+
+		<action name="showCalculation" class="org.hisp.dhis.pbf.calcs.ShowCalculationAction">
+			<result name="success" type="velocity">/main.vm</result>
+			<param name="menu">/dhis-web-pbf/menu.vm</param>
+			<param name="page">/dhis-web-pbf/calcs/calculation.vm</param>
+			<param name="javascripts">
+				javascript/dataElementGroup.js
+			</param>
+			<param name="stylesheets">style/styles.css</param>
+			<param name="requiredAuthorities">F_SHOW_CALCS</param>
+		</action>
+
+		<action name="calculateDetails"
+			class="org.hisp.dhis.pbf.calcs.CalculateDetailsAction">
+			<result name="success" type="redirect">showCalculation.action?id=${id}</result>
+			<param name="requiredAuthorities">F_PERFORM_CALCS</param>
+		</action>
+		
+		<action name="calculateDetailsForSingleUnit"
+			class="org.hisp.dhis.pbf.calcs.CalculateDetailsSingleUnitAction">
+			<result name="success" type="redirect">showCalculationDetails.action?id=${id}</result>
+			<param name="requiredAuthorities">F_PERFORM_CALCS</param>
+		</action>
+
+		
+		<!-- External verification Calculations -->
+
+		<action name="showExtVerCalculation" class="org.hisp.dhis.pbf.calcs.extver.ShowCalculationAction">
+			<result name="success" type="velocity">/main.vm</result>
+			<param name="menu">/dhis-web-pbf/menu.vm</param>
+			<param name="page">/dhis-web-pbf/calcs/extver/calculation.vm</param>
+			<param name="javascripts">
+				javascript/dataElementGroup.js
+			</param>
+			<param name="stylesheets">style/styles.css</param>
+			<param name="requiredAuthorities">F_SHOW_EXTVER_CALCS</param>
+		</action>
+
+		<action name="calculateExtVerDetailsForSingleUnit"
+			class="org.hisp.dhis.pbf.calcs.extver.CalculateDetailsSingleUnitAction">
+			<result name="success" type="redirect">showExtVerCalculationDetails.action?id=${id}</result>
+			<param name="requiredAuthorities">F_SHOW_EXTVER_CALCS</param>
+		</action>
+
+		<action name="showExtVerCalculationDetails" class="org.hisp.dhis.pbf.calcs.extver.ShowCalculationDetailsAction">
+			<result name="success" type="velocity">/main.vm</result>
+			<param name="menu">/dhis-web-pbf/menu.vm</param>
+			<param name="page">/dhis-web-pbf/calcs/extver/calculationDetails.vm</param>
+			<param name="javascripts">
+				javascript/dataElementGroup.js
+			</param>
+			<param name="stylesheets">style/styles.css</param>
+			<param name="requiredAuthorities">F_SHOW_EXTVER_CALCS</param>
+		</action>
+
+		<action name="showExtVerReportPeriod"
+			class="org.hisp.dhis.pbf.reportperiod.ShowReportPeriodAction">
+			<result name="success" type="velocity">/main.vm</result>
+			<param name="menu">/dhis-web-pbf/menu.vm</param>
+			<param name="page">/dhis-web-pbf/reportperiod/extver/reportPeriod.vm</param>
+			<param name="javascripts">
+				javascript/dataElementGroup.js
+			</param>
+			<param name="stylesheets">style/styles.css</param>
+			<param name="requiredAuthorities">F_SHOW_PERIOD</param>
+		</action>
+								
+		<!-- Reports -->
+
+		<action name="showCalculationDetails" class="org.hisp.dhis.pbf.calcs.ShowCalculationDetailsAction">
+			<result name="success" type="velocity">/main.vm</result>
+			<param name="menu">/dhis-web-pbf/menu.vm</param>
+			<param name="page">/dhis-web-pbf/calcs/calculationDetails.vm</param>
+			<param name="javascripts">
+				javascript/dataElementGroup.js
+			</param>
+			<param name="stylesheets">style/styles.css</param>
+			<param name="requiredAuthorities">F_PERFORM_CALCS</param>
+		</action>
+		
+		
+		<!-- Analytics -->
+
+		<action name="showReportPeriodForQuantityAnalytics"
+			class="org.hisp.dhis.pbf.reportperiod.ShowReportPeriodAction">
+			<result name="success" type="velocity">/main.vm</result>
+			<param name="menu">/dhis-web-pbf/menu.vm</param>
+			<param name="page">/dhis-web-pbf/analytics/quantityAnalyticsReportPeriod.vm</param>
+			<param name="javascripts">
+				javascript/dataElementGroup.js
+			</param>
+			<param name="stylesheets">style/styles.css</param>
+			<param name="requiredAuthorities">F_PERFORM_ANALYSIS</param>
+		</action>
+		
+		<action name="showQuantityAnalyticsDetails" class="org.hisp.dhis.pbf.analytics.ShowAnalyticsReportsAction">
+			<result name="success" type="velocity">/main.vm</result>
+			<param name="menu">/dhis-web-pbf/menu.vm</param>
+			<param name="page">/dhis-web-pbf/analytics/quantityAnalytics.vm</param>
+			<param name="javascripts">
+				javascript/dataElementGroup.js
+			</param>
+			<param name="stylesheets">style/styles.css</param>
+			<param name="requiredAuthorities">F_PERFORM_ANALYSIS</param>
+		</action>
+		
+		<action name="computeQuantityAnalytics"
+			class="org.hisp.dhis.pbf.analytics.QuantityAnalyticsDetailsAction">
+			<result name="success" type="redirect">showReportPeriodForQuantityAnalytics.action</result>
+			<param name="requiredAuthorities">F_PERFORM_ANALYSIS</param>
+		</action>
+
+		<action name="computeQuantityAnalyticsSingleUnit"
+			class="org.hisp.dhis.pbf.analytics.QuantityAnalyticsDetailsSingleUnitAction">
+			<result name="success" type="redirect">showReportPeriodForQuantityAnalytics.action</result>
+			<param name="requiredAuthorities">F_PERFORM_ANALYSIS</param>
+		</action>
+
+		<action name="showReportPeriodForQualityAnalytics"
+			class="org.hisp.dhis.pbf.reportperiod.ShowReportPeriodAction">
+			<result name="success" type="velocity">/main.vm</result>
+			<param name="menu">/dhis-web-pbf/menu.vm</param>
+			<param name="page">/dhis-web-pbf/analytics/qualityAnalyticsReportPeriod.vm</param>
+			<param name="javascripts">
+				javascript/dataElementGroup.js
+			</param>
+			<param name="stylesheets">style/styles.css</param>
+			<param name="requiredAuthorities">F_PERFORM_ANALYSIS</param>
+		</action>
+		
+		<action name="showQualityAnalyticsDetails" class="org.hisp.dhis.pbf.analytics.ShowAnalyticsReportsAction">
+			<result name="success" type="velocity">/main.vm</result>
+			<param name="menu">/dhis-web-pbf/menu.vm</param>
+			<param name="page">/dhis-web-pbf/analytics/qualityAnalytics.vm</param>
+			<param name="javascripts">
+				javascript/dataElementGroup.js
+			</param>
+			<param name="stylesheets">style/styles.css</param>
+			<param name="requiredAuthorities">F_PERFORM_ANALYSIS</param>
+		</action>
+		
+		<action name="computeQualityAnalytics"
+			class="org.hisp.dhis.pbf.analytics.QualityAnalyticsDetailsAction">
+			<result name="success" type="redirect">showReportPeriodForQualityAnalytics.action</result>
+			<param name="requiredAuthorities">F_PERFORM_ANALYSIS</param>
+		</action>
+		
+		<action name="computeQualityAnalyticsSingleUnit"
+			class="org.hisp.dhis.pbf.analytics.QualityAnalyticsDetailsSingleUnitAction">
+			<result name="success" type="redirect">showReportPeriodForQualityAnalytics.action</result>
+			<param name="requiredAuthorities">F_PERFORM_ANALYSIS</param>
+		</action>
+		
+	</package>
+</struts>

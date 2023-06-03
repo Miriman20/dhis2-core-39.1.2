@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"
+  [<!ENTITY identifiableProperties SYSTEM "classpath://org/hisp/dhis/common/identifiableProperties.hbm">]
+  >
+
+<hibernate-mapping>
+  <class name="org.hisp.dhis.pbf.model.PbfDataElement" table="pbfDataElement">
+  
+    <composite-id>
+      <key-many-to-one name="intVerDataElement" class="org.hisp.dhis.dataelement.DataElement" column="dataElementid" foreign-key="fk_pbfcalcs_dataelementid" lazy="false"  />
+      <key-many-to-one name="optionCombo" class="org.hisp.dhis.category.CategoryOptionCombo" column="optioncomboid" foreign-key="fk_pbfcalcs_categoryoptioncomboid" lazy="false"  />
+    </composite-id>
+
+	 <many-to-one name="facilityDataElement" class="org.hisp.dhis.dataelement.DataElement" column="facilityDataElement"
+        lazy="false" />
+
+	 <many-to-one name="extVerDataElement" class="org.hisp.dhis.dataelement.DataElement" column="extVerDataElement"
+        lazy="false" />
+
+	 <many-to-one name="auditDataElement" class="org.hisp.dhis.dataelement.DataElement" column="auditDataElement"
+        lazy="false" />
+        
+	 <many-to-one name="currationDataElement" class="org.hisp.dhis.dataelement.DataElement" column="currationDataElement"
+        lazy="false" />
+        
+	 <many-to-one name="currationAmountDataElement" class="org.hisp.dhis.dataelement.DataElement" column="currationAmountDataElement"
+        lazy="false" />
+        
+	 <many-to-one name="qualityScoreDataElement" class="org.hisp.dhis.dataelement.DataElement" column="qualityScoreDataElement"
+        lazy="false" />
+        
+	 <many-to-one name="poulationDataElement" class="org.hisp.dhis.dataelement.DataElement" column="poulationDataElement"
+        lazy="false" />
+        
+	 <many-to-one name="childrenUnderOneDataElement" class="org.hisp.dhis.dataelement.DataElement" column="childrenUnderOneDataElement"
+        lazy="false" />
+        
+	 <many-to-one name="childrenOneFiveDataElement" class="org.hisp.dhis.dataelement.DataElement" column="childrenOneFiveDataElement"
+        lazy="false" />
+        
+	 <many-to-one name="reprodWomanDataElement" class="org.hisp.dhis.dataelement.DataElement" column="reprodWomanDataElement"
+        lazy="false" />
+        
+	 <many-to-one name="pregWomanDataElement" class="org.hisp.dhis.dataelement.DataElement" column="pregWomanDataElement"
+        lazy="false" />
+        
+	 <many-to-one name="facQtyDataSet" class="org.hisp.dhis.dataset.DataSet" column="facQtyDataSet" lazy="false" />
+	 
+	 <many-to-one name="intVerQtyDataSet" class="org.hisp.dhis.dataset.DataSet" column="intVerQtyDataSet" lazy="false" />
+	 
+	 <many-to-one name="extVerQtyDataSet" class="org.hisp.dhis.dataset.DataSet" column="extVerQtyDataSet" lazy="false" />
+	            
+	 <many-to-one name="hcDataSetIntVer" class="org.hisp.dhis.dataset.DataSet" column="hcDataSetIntVer" lazy="false" />
+	 
+	 <many-to-one name="hhDataSetIntVer" class="org.hisp.dhis.dataset.DataSet" column="hhDataSetIntVer" lazy="false" />
+        
+	 <many-to-one name="hcDataSetExtVer" class="org.hisp.dhis.dataset.DataSet" column="hcDataSetExtVer" lazy="false" />
+	 
+	 <many-to-one name="hhDataSetExtVer" class="org.hisp.dhis.dataset.DataSet" column="hhDataSetExtVer" lazy="false" />
+
+        <many-to-one name="qScoreOptionCombo" class="org.hisp.dhis.category.CategoryOptionCombo" column="qScoreOptionCombo" lazy="false" />
+                <many-to-one name="qIntOptionCombo" class="org.hisp.dhis.category.CategoryOptionCombo" column="qIntOptionCombo" lazy="false" />
+                        <many-to-one name="qExtOptionCombo" class="org.hisp.dhis.category.CategoryOptionCombo" column="qExtOptionCombo" lazy="false" />
+        
+		<many-to-one name="periodQuarterMax" class="org.hisp.dhis.period.Period"
+			column="periodQuarterMax" foreign-key="fk_pbf_periodQuarterMax" lazy="false" />
+		
+        <many-to-one name="optionComboMom" class="org.hisp.dhis.category.CategoryOptionCombo" column="optionComboMom" lazy="false" />
+        <many-to-one name="optionComboMof" class="org.hisp.dhis.category.CategoryOptionCombo" column="optionComboMof" lazy="false" />
+        
+        <many-to-one name="optionComboMtm" class="org.hisp.dhis.category.CategoryOptionCombo" column="optionComboMtm" lazy="false" />
+        <many-to-one name="optionComboMtf" class="org.hisp.dhis.category.CategoryOptionCombo" column="optionComboMtf" lazy="false" />
+        
+        <many-to-one name="optionComboMhm" class="org.hisp.dhis.category.CategoryOptionCombo" column="optionComboMhm" lazy="false" />
+        <many-to-one name="optionComboMhf" class="org.hisp.dhis.category.CategoryOptionCombo" column="optionComboMhf" lazy="false" />
+    
+    <many-to-one name="providerOrgUnit" class="org.hisp.dhis.organisationunit.OrganisationUnit" column="providerOrgUnit" lazy="false"/>
+    
+    <property name="calculationFormulaRphc" column="calculationFormulaRphc" not-null="true" length="5500" />
+
+    <property name="calculationFormulaPhc" column="calculationFormulaPhc" not-null="true" length="5500" />
+
+    <property name="storedBy" column="storedBy" not-null="true" length="130" />
+
+    <property name="created" type="timestamp" />
+   
+	<property name="sortOrder" />
+	
+  </class>
+</hibernate-mapping>

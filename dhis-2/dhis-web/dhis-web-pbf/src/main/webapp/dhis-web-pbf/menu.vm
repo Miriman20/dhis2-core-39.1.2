@@ -1,0 +1,42 @@
+
+<h2>$i18n.getString( "pbf" )&nbsp;</h2>
+
+
+<h2>$i18n.getString( "pbf_configuration_and_reports" )&nbsp;</h2>
+<ul>
+	<li><a href="showReportPeriod.action">$i18n.getString( "pbf_report_period" )&nbsp;</a></li>
+	
+</ul>
+
+<h2>$i18n.getString( "pbf_excel_imp" )&nbsp;</h2>
+<ul>
+
+	<li><a href="displayImportDataValueForm.action">$i18n.getString( "excel_impex" )&nbsp;</a></li>
+	
+</ul>
+
+<h2>$i18n.getString( "pbf_analytics_reports" )&nbsp;</h2>
+<ul>
+
+	<li><a href="showControlReportParamsForm.action">$i18n.getString( "curr_select" )&nbsp;</a></li>
+	
+</ul>
+<ul>
+
+	<li><a href="showCalculationsReportParamsForm.action">$i18n.getString( "calcs_data" )&nbsp;</a></li>
+	
+</ul>
+
+<h2>$i18n.getString( "pbf_summary_reports" )&nbsp;</h2>
+<ul>
+
+	<li><a href="showQuarterlySummaryReportParamsForm.action">$i18n.getString( "summary_select" )&nbsp;</a></li>
+	
+</ul>
+
+
+<h2>$i18n.getString( "pbf_extver_reports" )&nbsp;</h2>
+
+<ul>
+	<li><a href="showExtVerReportPeriod.action">$i18n.getString( "pbf_extver_report_period" )&nbsp;</a></li>
+</ul>

@@ -1,0 +1,239 @@
+<script type="text/javascript">
+var i18n_select_data_set = '$encoder.jsEscape( $i18n.getString( "select_data_set" ) , "'")';
+var i18n_select_period = '$encoder.jsEscape( $i18n.getString( "select_period" ) , "'")';
+var i18n_register_complete_dataset_success = '$encoder.jsEscape( $i18n.getString( "register_complete_dataset_success" ) , "'")';
+var i18n_register_complete_dataset_failed = '$encoder.jsEscape( $i18n.getString( "register_complete_dataset_failed" ) , "'")';
+var i18n_undo_register_complete_dataset_success = '$encoder.jsEscape( $i18n.getString( "undo_register_complete_dataset_success" ) , "'")';
+var i18n_value_of_data_element_less = '$encoder.jsEscape( $i18n.getString( "value_of_data_element_less" ) , "'")';
+var i18n_value_of_data_element_greater = '$encoder.jsEscape( $i18n.getString( "value_of_data_element_greater" ) , "'")';
+var i18n_value_too_long = '$encoder.jsEscape( $i18n.getString( "value_is_too_long" ) , "'")';
+var i18n_value_must_integer = '$encoder.jsEscape( $i18n.getString( "value_must_integer" ) , "'")';
+var i18n_value_must_number = '$encoder.jsEscape( $i18n.getString( "value_must_number" ) , "'")';
+var i18n_value_must_positive_integer = '$encoder.jsEscape( $i18n.getString( "value_must_positive_integer" ) , "'")';
+var i18n_value_must_negative_integer = '$encoder.jsEscape( $i18n.getString( "value_must_negative_integer" ) , "'")';
+var i18n_field_unallowed_save_zero = '$encoder.jsEscape( $i18n.getString( "field_unallowed_save_zero" ) , "'")';
+var i18n_saving_value_failed_status_code = '$encoder.jsEscape( $i18n.getString( "saving_value_failed_status_code" ) , "'")';
+var i18n_saving_value_failed_dataset_is_locked = '$encoder.jsEscape( $i18n.getString( "saving_value_failed_dataset_is_locked" ) , "'")';
+var i18n_saving_comment_failed_status_code = '$encoder.jsEscape( $i18n.getString( "saving_comment_failed_status_code" ) , "'")';
+var i18n_saving_minmax_failed_error_code = '$encoder.jsEscape( $i18n.getString( "saving_minmax_failed_error_code" ) , "'")';
+var i18n_confirm_complete = '$encoder.jsEscape( $i18n.getString( "confirm_complete" ) , "'")';
+var i18n_confirm_undo = '$encoder.jsEscape( $i18n.getString( "confirm_undo" ) , "'")';
+var i18n_no_response_from_server = '$encoder.jsEscape( $i18n.getString( "no_response_from_server" ) , "'")';
+var i18n_enter_digits = '$encoder.jsEscape( $i18n.getString( "enter_digits" ) , "'")';
+var i18n_max_must_be_greater_than_min = '$encoder.jsEscape( $i18n.getString( "max_must_be_greater_than_min" ) , "'")';
+var i18n_mark_value_for_followup = '$encoder.jsEscape( $i18n.getString( "mark_value_for_followup" ) , "'")';
+var i18n_unmark_value_for_followup = '$encoder.jsEscape( $i18n.getString( "unmark_value_for_followup" ) , "'")';
+var i18n_operation_not_available_offline = '$encoder.jsEscape( $i18n.getString( "operation_not_available_offline" ) , "'")';
+var i18n_online_notification = '$encoder.jsEscape( $i18n.getString( "online_notification" ) , "'")';
+var i18n_offline_notification = '$encoder.jsEscape( $i18n.getString( "offline_notification" ) , "'")';
+var i18n_need_to_sync_notification = '$encoder.jsEscape( $i18n.getString( "need_to_sync_notification" ) , "'")';
+var i18n_sync_now = '$encoder.jsEscape( $i18n.getString( "sync_now" ) , "'")';
+var i18n_sync_success = '$encoder.jsEscape( $i18n.getString( "sync_success" ) , "'")';
+var i18n_sync_failed = '$encoder.jsEscape( $i18n.getString( "sync_failed" ) , "'")';
+var i18n_uploading_data_notification = '$encoder.jsEscape( $i18n.getString( "uploading_data_notification" ) , "'")';
+var i18n_ajax_login_failed = '$encoder.jsEscape( $i18n.getString( "ajax_login_failed" ) , "'")';
+var i18n_no_dataelement_selected = '$encoder.jsEscape( $i18n.getString( "no_dataelement_selected" ) , "'")';
+var i18n_dataset_is_locked = '$encoder.jsEscape( $i18n.getString( "dataset_is_locked" ) , "'")';
+var i18n_register_complete_failed_dataset_is_locked = '$encoder.jsEscape( $i18n.getString( "register_complete_failed_dataset_is_locked" ) , "'")';
+var i18n_unregister_complete_failed_dataset_is_locked = '$encoder.jsEscape( $i18n.getString( "unregister_complete_failed_dataset_is_locked" ) , "'")';
+var i18n_show_all_sections = '$encoder.jsEscape( $i18n.getString( "show_all_sections" ) , "'")';
+var i18n_show_all_items = '$encoder.jsEscape( $i18n.getString( "show_all_items" ) , "'")';
+var i18n_all_values_for_data_element_must_be_filled = '$encoder.jsEscape( $i18n.getString( "all_values_for_data_element_must_be_filled" ) , "'")';
+var i18n_validation_result = '$encoder.jsEscape( $i18n.getString( "validation_result" ) , "'")';
+var i18n_successful_validation = '$encoder.jsEscape( $i18n.getString( "successful_validation" ) , "'")';
+var i18n_no_organisationunit_selected = '$encoder.jsEscape( $i18n.getString( "no_organisationunit_selected" ) , "'")';
+var i18n_childrens_forms = '$encoder.jsEscape( $i18n.getString( "childrens_forms" ) , "'")';
+var i18n_no_periods_click_prev_year_button = '$encoder.jsEscape( $i18n.getString( "no_periods_click_prev_year_button" ) , "'")';
+var i18n_view_comment = '$encoder.jsEscape( $i18n.getString( "view_comment" ) , "'")';
+
+//custom modifiers
+    function myDigitsModifier(oldValue){
+        return oldValue.replace(/[^0-9\.]/g, "") // leave only digits
+    }
+	
+    function myCapsModifier(oldValue){
+        return oldValue.replace(XRegExp("^\\p{L}"), function ($0) { return $0.toUpperCase(); });
+    }
+
+//custom validators 
+	function noSquareBrackets(valu){
+		var rx=/(.*?)\[(.*?)\](.*?)/;
+		if(rx.test(valu)){return false;}
+		else{return true;}
+	}
+	
+    function myCyrillicAndSpaceValidator(text){
+		return XRegExp("^\\p{Cyrillic}+").test(text);
+    }
+
+    function myCyrillicDigitsAndSpaceValidator(text){
+		return XRegExp("^[\\p{Cyrillic}0-9]+").test(text);
+    }
+	
+</script>
+
+<h3>$i18n.getString( "add_report_period" )</h3>
+<form id="addReportPeriodForm" action="addReportPeriod.action" method="post">
+<table>
+<tr>
+<td>$i18n.getString('period_name')
+</td>
+<td>
+            <input id="periodName" name="periodName" type="text" value="" style="width:350px;" data-bvalidator="myCyrillicDigitsAndSpaceValidator,required" data-bvalidator-modifier="myCapsModifier"/>
+</td>
+<tr>
+
+<tr>
+<td>$i18n.getString('month_one')
+</td>
+<td>
+            <select id="monthOne" name="monthOne"  data-bvalidator="noSquareBrackets,required">
+            </select>
+</td>
+<tr>
+<td>$i18n.getString('month_two')
+</td>
+<td style="width: 350px;">
+            <select id="monthTwo" name="monthTwo" data-bvalidator="noSquareBrackets,required">
+            </select>
+</td>
+</tr>
+<tr>
+<td>$i18n.getString('month_three')
+</td>
+<td>
+            <select id="monthThree" name="monthThree" data-bvalidator="noSquareBrackets,required">
+            </select>
+</td>
+
+</tr>
+<tr>
+<td>$i18n.getString('qtr')
+</td>
+<td>
+            <select id="quarterlyPeriod" name="quarterlyPeriod" data-bvalidator="noSquareBrackets,required">
+            </select>
+</td>
+
+</tr>
+<tr><td></td><td>
+<input type="submit" value="$i18n.getString( "add" )" style="width:10em" >
+</td></tr>
+</table>
+
+</form>
+
+
+<script>
+
+//localize validator strings
+    var options = {
+        lang: 'tg',
+        errorMessages: {
+            tg: {
+					'default':    'Ин арзишро ислоҳ намоед.',
+					'equalto':    'Please enter the same value again.',
+					'differs':    'Please enter a different value.',
+					'minlength':  'The length must be at least {0} characters',
+					'maxlength':  'The length must be at max {0} characters',
+					'rangelength':'The length must be between {0} and {1}',
+					'min':        'Please enter a number greater than or equal to {0}.',
+					'max':        'Please enter a number less than or equal to {0}.',
+					'between':    'Please enter a number between {0} and {1}.',
+					'required':   'Ин навишт ҳатмӣ аст.',
+					'alpha':      'Please enter alphabetic characters only.',
+					'alphanum':   'Please enter alphanumeric characters only.',
+					'digit':      'Танҳо рақам дохил намоед.',
+					'number':     'Танҳо рақам дохил намоед.',
+					'email':      'Please enter a valid email address.',
+					'image':      'This field should only contain image types',
+					'myCyrillicValidator':      'Танҳо алифбои тоҷикӣ иҷозат аст.',
+					'myCyrillicDigitsAndSpaceValidator': 'Танҳо алифбои тоҷикӣ ва рақам.',
+					'noSquareBrackets':      '[] ijozat nest.',
+					'url':        'Please enter a valid URL.',
+					'ip4':        'Please enter a valid IPv4 address.',
+					'ip6':        'Please enter a valid IPv6 address.',
+					'date':       'Please enter a valid date in format {0}.'
+            }
+        },
+		       classNamePrefix: 'bvalidator_postit_',
+        offset:     {x:-29, y:-10},
+        template: '<div class="{errMsgClass}">{message}<div class="bvalidator_postit_pointer"><div class="bvalidator_postit_inner_pointer"></div></div></div>',
+		singleError: true,
+		validateOn: 'keyup'
+    };
+	
+jQuery(document).ready( function(){
+periodSelectorMonths();
+periodSelectorQuarters();
+$('#addReportPeriodForm').bValidator(options);
+    });
+
+		
+function periodSelectorQuarters()
+{
+var periodTypeFactory = new PeriodType();
+
+    var periodType = new MonthlyPeriodType( dateFormat );
+    var allowFuturePeriods = true;
+    var periods = periodTypeFactory.get( 'Quarterly' ).generatePeriods( 0 );
+    periods = periodTypeFactory.reverse( periods );
+    
+        if ( periods.length > 0 )
+        {
+        	addOptionById( 'quarterlyPeriod', '[-1]', '[ ' + i18n_select_period + ' ]' );
+        }
+        else
+        {
+        	addOptionById( 'quarterlyPeriod', '[-1]', i18n_no_periods_click_prev_year_button );
+        }
+		    
+    $.safeEach( periods, function( idx, item ) 
+    {
+        addOptionById( 'quarterlyPeriod', item.id, item.name );
+    } );
+	
+	
+}
+	
+function periodSelectorMonths()
+{
+var periodTypeFactory = new PeriodType();
+
+    var periodType = new MonthlyPeriodType( dateFormat );
+    var allowFuturePeriods = true;
+    var periods = periodTypeFactory.get( 'Monthly' ).generatePeriods( 0 );
+    periods = periodTypeFactory.reverse( periods );
+    
+        if ( periods.length > 0 )
+        {
+        	addOptionById( 'monthOne', '[-1]', '[ ' + i18n_select_period + ' ]' );
+			addOptionById( 'monthTwo', '[-1]', '[ ' + i18n_select_period + ' ]' );
+			addOptionById( 'monthThree', '[-1]', '[ ' + i18n_select_period + ' ]' );
+        }
+        else
+        {
+        	addOptionById( 'monthOne', '[-1]', i18n_no_periods_click_prev_year_button );
+			addOptionById( 'monthTwo', '[-1]', i18n_no_periods_click_prev_year_button );
+			addOptionById( 'monthThree', '[-1]', i18n_no_periods_click_prev_year_button );
+        }
+		    
+    $.safeEach( periods, function( idx, item ) 
+    {
+        addOptionById( 'monthOne', item.id, item.name );
+		addOptionById( 'monthTwo', item.id, item.name );
+		addOptionById( 'monthThree', item.id, item.name );
+    } );
+}
+
+( function( $ ) {
+    $.safeEach = function( arr, fn ) 
+    {
+        if( arr )
+        {
+            $.each( arr, fn );
+        }
+    };
+} )( jQuery );
+
+</script>

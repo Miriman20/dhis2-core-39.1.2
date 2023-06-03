@@ -1,0 +1,251 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"
+  [<!ENTITY identifiableProperties SYSTEM "classpath://org/hisp/dhis/common/identifiableProperties.hbm">]
+  >
+
+<hibernate-mapping>
+	<class name="org.hisp.dhis.pbf.model.PbfAnalyticsReportDetails" table="pbfanalyticsdata">
+
+		<composite-id>
+			<key-many-to-one name="dataElement"
+				class="org.hisp.dhis.dataelement.DataElement" column="dataelementid"
+				foreign-key="fk_pbfcalcs_dataelementid" />
+			<key-many-to-one name="periodQuarter" class="org.hisp.dhis.period.Period"
+				column="qtrperiodid" foreign-key="fk_pbfcalcs_periodid" />
+			<key-many-to-one name="orgUnit"
+				class="org.hisp.dhis.organisationunit.OrganisationUnit" column="unitid"
+				foreign-key="fk_pbfcalcs_organisationunitid" />
+			<key-many-to-one name="optionCombo"
+				class="org.hisp.dhis.category.CategoryOptionCombo"
+				column="optioncomboid" foreign-key="fk_pbfcalcs_categoryoptioncomboid" />
+		</composite-id>
+		
+		<many-to-one name="periodOne" class="org.hisp.dhis.period.Period"
+			column="periodOne" foreign-key="fk_pbfmonthone_chartid" lazy="false" />
+
+		<many-to-one name="periodTwo" class="org.hisp.dhis.period.Period"
+			column="periodTwo" foreign-key="fk_pbfmonthtwo_chartid" lazy="false" />
+
+		<many-to-one name="periodThree" class="org.hisp.dhis.period.Period"
+			column="periodThree" foreign-key="fk_pbfmonththree_chartid" lazy="false" />
+
+		<property name="facilityName" column="facilityName" not-null="false"
+			length="530" />
+		<property name="districtName" column="districtName" not-null="false"
+			length="530" />
+		<property name="provinceName" column="provinceName" not-null="false"
+			length="530" />
+		<property name="countryName" column="countryName" not-null="true"
+			length="530" />
+
+		<property name="facilityNameEn" column="facilityNameEn" not-null="false"
+			length="530" />
+		<property name="districtNameEn" column="districtNameEn" not-null="false"
+			length="530" />
+		<property name="provinceNameEn" column="provinceNameEn" not-null="false"
+			length="530" />
+		<property name="countryNameEn" column="countryNameEn" not-null="true"
+			length="530" />
+					
+		<property name="facilityType" column="facilityType"/>
+					
+		<property name="facilityTypeEn" column="facilityTypeEn"/>
+			
+		<property name="periodName" column="periodName" not-null="true"/>
+		
+		<property name="indicatorName" column="indicatorName"
+			not-null="true" length="530" />
+		<property name="indicatorNameEn" column="indicatorNameEn"
+			not-null="true" length="530" />
+						
+		<property name="comboName" column="comboName" not-null="true"
+			length="230" />
+
+		<property name="monthOne" column="monthOne" not-null="true"
+			length="130" />
+
+		<property name="monthTwo" column="monthTwo" not-null="true"
+			length="130" />
+
+		<property name="monthThree" column="monthThree" not-null="true"
+			length="130" />
+
+		<property name="monthOneQtyFacility" />
+		<property name="monthOneQtyFacilityMale" />
+		<property name="monthOneQtyFacilityFemale" />
+
+		<property name="monthTwoQtyFacility" />
+		<property name="monthTwoQtyFacilityMale" />
+		<property name="monthTwoQtyFacilityFemale" />
+
+		<property name="monthThreeQtyFacility" />
+		<property name="monthThreeQtyFacilityMale" />
+		<property name="monthThreeQtyFacilitFemale" />
+
+		<property name="quarterQtyFacility" />
+		<property name="quarterQtyFacilityMale" />
+		<property name="quarterQtyFacilityFemale" />
+
+		<property name="monthOneQtyIntVer" />
+		<property name="monthOneQtyIntVerMale" />
+		<property name="monthOneQtyIntVerFemale" />
+
+		<property name="monthTwoQtyIntVer" />
+		<property name="monthTwoQtyIntVerMale" />
+		<property name="monthTwoQtyIntVerFemale" />
+
+		<property name="monthThreeQtyIntVer" />
+		<property name="monthThreeQtyIntVerMale" />
+		<property name="monthThreeQtyIntVerFemale" />
+
+		<property name="quarterQtyIntVer" />
+		<property name="quarterQtyIntVerMale" />
+		<property name="quarterQtyIntVerFemale" />
+
+		<property name="monthOneQtyExtVer" />
+		<property name="monthOneQtyExtVerMale" />
+		<property name="monthOneQtyExtVerFemale" />
+
+		<property name="monthTwoQtyExtVer" />
+		<property name="monthTwoQtyExtVerMale" />
+		<property name="monthTwoQtyExtVerFemale" />
+
+		<property name="monthThreeQtyExtVer" />
+		<property name="monthThreeQtyExtVerMale" />
+		<property name="monthThreeQtyExtVerFemale" />
+
+		<property name="quarterQtyExtVer" />
+		<property name="quarterQtyExtVerMale" />
+		<property name="quarterQtyExtVerFemale" />
+
+		<property name="monthOneQtyFacilityThreshold" />
+		<property name="monthOneQtyFacilityThresholdMale" />
+		<property name="monthOneQtyFacilityThresholdFemale" />
+
+		<property name="monthTwoQtyFacilityThreshold" />
+		<property name="monthTwoQtyFacilityThresholdMale" />
+		<property name="monthTwoQtyFacilityThresholdFemale" />
+
+		<property name="monthThreeQtyFacilityThreshold" />
+		<property name="monthThreeQtyFacilityThresholdMale" />
+		<property name="monthThreeQtyFacilityThresholdFemale" />
+
+		<property name="quarterQtyFacilityThreshold" />
+		<property name="quarterQtyFacilityThresholdMale" />
+		<property name="quarterQtyFacilityThresholdFemale" />
+
+		<property name="monthOneQtyIntVerThreshold" />
+		<property name="monthOneQtyIntVerThresholdMale" />
+		<property name="monthOneQtyIntVerThresholdFemale" />
+
+		<property name="monthTwoQtyIntVerThreshold" />
+		<property name="monthTwoQtyIntVerThresholdMale" />
+		<property name="monthTwoQtyIntVerThresholdFemale" />
+
+		<property name="monthThreeQtyIntVerThreshold" />
+		<property name="monthThreeQtyIntVerThresholdMale" />
+		<property name="monthThreeQtyIntVerThresholdFemale" />
+
+		<property name="quarterQtyIntVerThreshold" />
+		<property name="quarterQtyIntVerThresholdMale" />
+		<property name="quarterQtyIntVerThresholdFemale" />
+
+		<property name="monthOneQtyExtVerThreshold" />
+		<property name="monthOneQtyExtVerThresholdMale" />
+		<property name="monthOneQtyExtVerThresholdFemale" />
+
+		<property name="monthTwoQtyExtVerThreshold" />
+		<property name="monthTwoQtyExtVerThresholdMale" />
+		<property name="monthTwoQtyExtVerThresholdFemale" />
+
+		<property name="monthThreeQtyExtVerThreshold" />
+		<property name="monthThreeQtyExtVerThresholdMale" />
+		<property name="monthThreeQtyExtVerThresholdFemale" />
+
+		<property name="quarterQtyExtVerThreshold" />
+		<property name="quarterQtyExtVerThresholdMale" />
+		<property name="quarterQtyExtVerThresholdFemale" />
+
+		<property name="facilityMonthOneValue" />
+
+		<property name="facilityMonthTwoValue" />
+
+		<property name="facilityMonthThreeValue" />
+
+		<property name="facilityQuarterValue" />
+
+
+		<property name="thresholdValue" />
+
+		<property name="basisValue" />
+
+		<property name="diffQuarterValue" />
+
+		<property name="qualityScore" />
+
+		<property name="totalQualityScore" />
+
+
+		<property name="population" />
+
+		<property name="childrenUnderOne" />
+
+		<property name="childrenOneFive" />
+
+		<property name="pregWoman" />
+
+		<property name="reprodWoman" />
+
+
+		<property name="monthOneAmount" />
+
+		<property name="monthTwoAmount" />
+
+		<property name="monthThreeAmount" />
+
+		<property name="quarterAmount" />
+
+		<property name="unitPrice" />
+
+		<property name="totalAmount" />
+
+		<property name="discountRate" />
+
+		<property name="discountAmount" />
+
+		<property name="totalAmountWithDiscount" />
+
+		<property name="auditAmount" />
+
+		<property name="totalAmountWithDiscountPlusAudit" />
+
+		<property name="facilityAmount" />
+
+		<property name="salaryAmount" />
+
+		<property name="taxPercent" />
+
+		<property name="socialPercent" />
+
+		<property name="taxAmount" />
+
+		<property name="socialTaxAmount" />
+
+		<property name="netGross" />
+		
+		<property name="sortOrder" />
+
+		<property name="storedBy" column="storedBy" not-null="true"
+			length="130" />
+
+		<property name="updatedBy" column="updatedBy" length="130" />
+
+		<property name="created" type="timestamp" />
+
+		<property name="lastUpdated" type="timestamp" />
+
+
+	</class>
+</hibernate-mapping>

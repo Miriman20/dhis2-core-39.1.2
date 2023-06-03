@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+  <bean id="org.hisp.dhis.pbf.action.NoAction" class="org.hisp.dhis.pbf.action.NoAction" />
+
+
+<!-- Excel Data Entry files -->
+
+ <bean id="org.hisp.dhis.pbf.excelexport.GetPbfDataEntryExcelExportParams" class="org.hisp.dhis.pbf.excelexport.GetPbfDataEntryExcelExportParams"
+    scope="prototype">
+    <property name="organisationUnitService" ref="org.hisp.dhis.organisationunit.OrganisationUnitService" />
+    <property name="selectionTreeManager" ref="org.hisp.dhis.oust.manager.SelectionTreeManager" />   
+    <property name="organisationUnitGroupService" ref="org.hisp.dhis.organisationunit.OrganisationUnitGroupService" />
+  </bean>
+    
+ <bean id="org.hisp.dhis.pbf.excelexport.ProducePbfDataEntryExcelExport" class="org.hisp.dhis.pbf.excelexport.ProducePbfDataEntryExcelExport"
+    scope="prototype">
+    <property name="pbfService">
+            <ref bean="org.hisp.dhis.pbf.api.PbfService" />
+        </property>
+     <property name="periodService" ref="org.hisp.dhis.period.PeriodService" />   
+    <property name="organisationUnitService" ref="org.hisp.dhis.organisationunit.OrganisationUnitService" />
+  </bean>
+  
+ 
+ <bean id="org.hisp.dhis.pbf.excelexport.GetPbfDataEntryExcelExportParamsExt" class="org.hisp.dhis.pbf.excelexport.GetPbfDataEntryExcelExportParamsExt"
+    scope="prototype">
+    <property name="organisationUnitService" ref="org.hisp.dhis.organisationunit.OrganisationUnitService" />
+    <property name="selectionTreeManager" ref="org.hisp.dhis.oust.manager.SelectionTreeManager" />   
+    <property name="organisationUnitGroupService" ref="org.hisp.dhis.organisationunit.OrganisationUnitGroupService" />
+  </bean>
+    
+ <bean id="org.hisp.dhis.pbf.excelexport.ProducePbfDataEntryExcelExportExt" class="org.hisp.dhis.pbf.excelexport.ProducePbfDataEntryExcelExportExt"
+    scope="prototype">
+    <property name="pbfService">
+            <ref bean="org.hisp.dhis.pbf.api.PbfService" />
+        </property>
+     <property name="periodService" ref="org.hisp.dhis.period.PeriodService" />   
+    <property name="organisationUnitService" ref="org.hisp.dhis.organisationunit.OrganisationUnitService" />
+  </bean>
+<!-- PBF -->
+  
+
+  <bean id="org.hisp.dhis.pbf.source.GetPbfDataElementstAction" 
+  class="org.hisp.dhis.pbf.source.GetPbfDataElementstAction"
+    scope="prototype">
+    <property name="dataElementService" ref="org.hisp.dhis.dataelement.DataElementService" />
+    <property name="pbfService">
+            <ref bean="org.hisp.dhis.pbf.api.PbfService" />
+        </property>       
+  </bean>
+
+    <bean
+        id="org.hisp.dhis.pbf.source.AddUpdateDataElementSourceAction"
+        class="org.hisp.dhis.pbf.source.AddUpdateDataElementSourceAction"
+        scope="prototype">
+        <property name="dataElementService">
+            <ref bean="org.hisp.dhis.dataelement.DataElementService" />
+        </property>
+        <property name="pbfService">
+            <ref bean="org.hisp.dhis.pbf.api.PbfService" />
+        </property>
+        <property name="dataElementCategoryService">
+            <ref bean="org.hisp.dhis.category.CategoryService" />
+        </property>    
+        <property name="dataSetService" ref="org.hisp.dhis.dataset.DataSetService" />     
+    </bean>
+    
+    <bean id="org.hisp.dhis.pbf.source.GetOptionCombosAction"
+        class="org.hisp.dhis.pbf.source.GetOptionCombosAction"
+        scope="prototype">
+        <property name="dataElementService">
+            <ref bean="org.hisp.dhis.dataelement.DataElementService"/>
+        </property>
+    </bean>
+        
+    <bean id="org.hisp.dhis.pbf.source.GetDataElementSourceDefinitionsAction"
+        class="org.hisp.dhis.pbf.source.GetDataElementSourceDefinitionsAction"
+        scope="prototype">
+        <property name="pbfService">
+            <ref bean="org.hisp.dhis.pbf.api.PbfService" />
+        </property>
+    </bean>
+    
+    <bean id="org.hisp.dhis.pbf.source.DeleteDataElementSourceDefinitionsAction"
+        class="org.hisp.dhis.pbf.source.DeleteDataElementSourceDefinitionsAction"
+        scope="prototype">
+                <property name="dataElementService">
+            <ref bean="org.hisp.dhis.dataelement.DataElementService"/>
+        </property>
+        <property name="dataElementCategoryService">
+            <ref bean="org.hisp.dhis.category.CategoryService" />
+        </property>
+        <property name="pbfService">
+            <ref bean="org.hisp.dhis.pbf.api.PbfService" />
+        </property>        
+    </bean>
+    
+    <bean id="org.hisp.dhis.pbf.source.AddDataElementDataSourceAction"
+        class="org.hisp.dhis.pbf.source.AddDataElementDataSourceAction"
+        scope="prototype">
+        <property name="dataElementService">
+            <ref bean="org.hisp.dhis.dataelement.DataElementService"/>
+        </property>
+        <property name="dataElementCategoryService">
+            <ref bean="org.hisp.dhis.category.CategoryService" />
+        </property>
+        <property name="pbfService">
+            <ref bean="org.hisp.dhis.pbf.api.PbfService" />
+        </property>
+        <property name="currentUserService"> 
+            <ref bean="org.hisp.dhis.user.CurrentUserService" />
+        </property>
+    </bean>
+        
+    <bean id="org.hisp.dhis.pbf.source.AddDataElementSourceAction"
+        class="org.hisp.dhis.pbf.source.AddDataElementSourceAction"
+        scope="prototype">
+        <property name="dataElementService">
+            <ref bean="org.hisp.dhis.dataelement.DataElementService"/>
+        </property>
+        <property name="dataElementCategoryService">
+            <ref bean="org.hisp.dhis.category.CategoryService" />
+        </property>
+        <property name="pbfService">
+            <ref bean="org.hisp.dhis.pbf.api.PbfService" />
+        </property>
+    </bean>   
+              
+</beans>

@@ -1,0 +1,730 @@
+
+<h3>$i18n.getString( "edit_data_element_source" )</h3>
+
+$pbfDataElement.intVerDataElement.formName
+
+<table class="mainPageTable" >
+<thead>
+<th>$i18n.getString( "property_name" )
+</th>
+<th>$i18n.getString( "property_source" )
+</th>
+<th>$i18n.getString( "for_all" )
+</th>
+</thead>
+<tr>
+<td>
+$i18n.getString( "sort_order" )
+</td>
+<td>
+<input name="sortOrder" id="sortOrder" type="text" value="$pbfDataElement.sortOrder"/></td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+$i18n.getString( "intver_de" )
+</td>
+<td>
+            <select id="intVerDataElementId">
+                #foreach( $dataElement in $des )
+				#if($dataElement.id==$pbfDataElement.intVerDataElement.id){
+                    <option value="$dataElement.id" selected="selected">$encoder.htmlEncode( $dataElement.displayName )</option>
+				}#else{
+					<option value="$dataElement.id">$encoder.htmlEncode( $dataElement.displayName )</option>
+					}
+				#end
+                #end
+            </select>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+$i18n.getString( "extver_de" )
+</td>
+<td>
+            <select id="extVerDataElementId">
+                #foreach( $dataElement in $des )
+				#if($dataElement.id==$pbfDataElement.extVerDataElement.id){
+                    <option value="$dataElement.id" selected="selected">$encoder.htmlEncode( $dataElement.displayName )</option>
+				}#else{
+					<option value="$dataElement.id">$encoder.htmlEncode( $dataElement.displayName )</option>
+					}
+				#end
+                #end
+            </select>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+$i18n.getString( "fac_de" )
+</td>
+<td>
+            <select id="facDataElementId">
+                #foreach( $dataElement in $des )
+				#if($dataElement.id==$pbfDataElement.facilityDataElement.id){
+                    <option value="$dataElement.id" selected="selected">$encoder.htmlEncode( $dataElement.displayName )</option>
+				}#else{
+					<option value="$dataElement.id">$encoder.htmlEncode( $dataElement.displayName )</option>
+					}
+				#end
+                #end
+            </select>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+$i18n.getString( "audit_de" )
+</td>
+<td>
+            <select id="auditDataElementId">
+                #foreach( $dataElement in $des )
+				#if($dataElement.id==$pbfDataElement.auditDataElement.id){
+                    <option value="$dataElement.id" selected="selected">$encoder.htmlEncode( $dataElement.displayName )</option>
+				}#else{
+					<option value="$dataElement.id">$encoder.htmlEncode( $dataElement.displayName )</option>
+					}
+				#end
+                #end
+            </select>
+</td>
+<td>
+<input name="auditDeAll" id="auditDeAll"  type="checkbox">
+</td>
+</tr>
+<tr>
+<td>
+$i18n.getString( "contram_de" )
+</td>
+<td>
+            <select id="contramDataElementId">
+                #foreach( $dataElement in $des )
+				#if($dataElement.id==$pbfDataElement.currationAmountDataElement.id){
+                    <option value="$dataElement.id" selected="selected">$encoder.htmlEncode( $dataElement.displayName )</option>
+				}#else{
+					<option value="$dataElement.id">$encoder.htmlEncode( $dataElement.displayName )</option>
+					}
+				#end
+                #end
+            </select>
+</td>
+<td>
+<input name="contramDeAll" id="contramDeAll"  type="checkbox">
+</td>
+</tr>
+<tr>
+<td>
+$i18n.getString( "contr_de" )
+</td>
+<td>
+            <select id="contrDataElementId">
+                #foreach( $dataElement in $des )
+				#if($dataElement.id==$pbfDataElement.currationDataElement.id){
+                    <option value="$dataElement.id" selected="selected">$encoder.htmlEncode( $dataElement.displayName )</option>
+				}#else{
+					<option value="$dataElement.id">$encoder.htmlEncode( $dataElement.displayName )</option>
+					}
+				#end
+                #end
+            </select>
+</td>
+<td>
+<input name="contrDeAll" id="contrDeAll"  type="checkbox">
+</td>
+</tr>
+<tr>
+<td>
+$i18n.getString( "qualscore_de" )
+</td>
+<td>
+            <select id="qualscoreDataElementId">
+                #foreach( $dataElement in $des )
+				#if($dataElement.id==$pbfDataElement.qualityScoreDataElement.id){
+                    <option value="$dataElement.id" selected="selected">$encoder.htmlEncode( $dataElement.displayName )</option>
+				}#else{
+					<option value="$dataElement.id">$encoder.htmlEncode( $dataElement.displayName )</option>
+					}
+				#end
+                #end
+            </select>
+</td>
+<td>
+<input name="qualscoreDeAll" id="qualscoreDeAll"  type="checkbox">
+</td>
+</tr>
+<tr>
+<td>
+$i18n.getString( "population_de" )
+</td>
+<td>
+            <select id="populationDataElementId">
+                #foreach( $dataElement in $des )
+				#if($dataElement.id==$pbfDataElement.populationDataElement.id){
+                    <option value="$dataElement.id" selected="selected">$encoder.htmlEncode( $dataElement.displayName )</option>
+				}#else{
+					<option value="$dataElement.id">$encoder.htmlEncode( $dataElement.displayName )</option>
+					}
+				#end
+                #end
+            </select>
+</td>
+<td>
+<input name="populationDeAll" id="populationDeAll"  type="checkbox">
+</td>
+</tr>
+<tr>
+<td>
+$i18n.getString( "childrenunderone_de" )
+</td>
+<td>
+            <select id="childrenUnderOneDataElementId">
+                #foreach( $dataElement in $des )
+				#if($dataElement.id==$pbfDataElement.childrenUnderOneDataElement.id){
+                    <option value="$dataElement.id" selected="selected">$encoder.htmlEncode( $dataElement.displayName )</option>
+				}#else{
+					<option value="$dataElement.id">$encoder.htmlEncode( $dataElement.displayName )</option>
+					}
+				#end
+                #end
+            </select>
+</td>
+<td>
+<input name="childrenUnderOneDeAll" id="childrenUnderOneDeAll"  type="checkbox">
+</td>
+</tr>
+<tr>
+<td>
+$i18n.getString( "childrenonefive_de" )
+</td>
+<td>
+            <select id="childrenOneFiveDataElementId">
+                #foreach( $dataElement in $des )
+				#if($dataElement.id==$pbfDataElement.childrenOneFiveDataElement.id){
+                    <option value="$dataElement.id" selected="selected">$encoder.htmlEncode( $dataElement.displayName )</option>
+				}#else{
+					<option value="$dataElement.id">$encoder.htmlEncode( $dataElement.displayName )</option>
+					}
+				#end
+                #end
+            </select>
+</td>
+<td>
+<input name="childrenOneFiveDeAll" id="childrenOneFiveDeAll"  type="checkbox">
+</td>
+</tr>
+<tr>
+<td>
+$i18n.getString( "reprodwoman_de" )
+</td>
+<td>
+            <select id="reprodWomanDataElementId">
+                #foreach( $dataElement in $des )
+				#if($dataElement.id==$pbfDataElement.reprodWomanDataElement.id){
+                    <option value="$dataElement.id" selected="selected">$encoder.htmlEncode( $dataElement.displayName )</option>
+				}#else{
+					<option value="$dataElement.id">$encoder.htmlEncode( $dataElement.displayName )</option>
+					}
+				#end
+                #end
+            </select>
+</td>
+<td>
+<input name="reprodWomanDeAll" id="reprodWomanDeAll"  type="checkbox">
+</td>
+</tr>
+<tr>
+<td>
+$i18n.getString( "pregwoman_de" )
+</td>
+<td>
+            <select id="pregWomanDataElementId">
+                #foreach( $dataElement in $des )
+				#if($dataElement.id==$pbfDataElement.pregWomanDataElement.id){
+                    <option value="$dataElement.id" selected="selected">$encoder.htmlEncode( $dataElement.displayName )</option>
+				}#else{
+					<option value="$dataElement.id">$encoder.htmlEncode( $dataElement.displayName )</option>
+					}
+				#end
+                #end
+            </select>
+</td>
+<td>
+<input name="pregWomanDeAll" id="pregWomanDeAll"  type="checkbox">
+</td>
+</tr>
+
+<tr>
+<td>
+$i18n.getString( "optioncombo_oc" )
+</td>
+<td>
+            <select id="optionComboId">
+                #foreach( $optionCombo in $ocs )
+				#if($optionCombo.id==$pbfDataElement.optionCombo.id){
+                    <option value="$optionCombo.id" selected="selected">$encoder.htmlEncode( $optionCombo.displayName )</option>
+				}#else{
+					<option value="$optionCombo.id">$encoder.htmlEncode( $optionCombo.displayName )</option>
+					}
+				#end
+                #end
+            </select>
+</td>
+<td>
+<input name="optionComboOcAll" id="optionComboOcAll"  type="checkbox">
+</td>
+</tr>
+<tr>
+<td>
+$i18n.getString( "optionComboMom_oc" )
+</td>
+<td>
+            <select id="optionComboMomId">
+                #foreach( $optionCombo in $ocs )
+				#if($optionCombo.id==$pbfDataElement.optionComboMom.id){
+                    <option value="$optionCombo.id" selected="selected">$encoder.htmlEncode( $optionCombo.displayName )</option>
+				}#else{
+					<option value="$optionCombo.id">$encoder.htmlEncode( $optionCombo.displayName )</option>
+					}
+				#end
+                #end
+            </select>
+</td>
+<td>
+<input name="optionComboMomOcAll" id="optionComboMomOcAll"  type="checkbox">
+</td>
+</tr>
+<tr>
+<td>
+$i18n.getString( "optionComboMof_oc" )
+</td>
+<td>
+            <select id="optionComboMofId">
+                #foreach( $optionCombo in $ocs )
+				#if($optionCombo.id==$pbfDataElement.optionComboMof.id){
+                    <option value="$optionCombo.id" selected="selected">$encoder.htmlEncode( $optionCombo.displayName )</option>
+				}#else{
+					<option value="$optionCombo.id">$encoder.htmlEncode( $optionCombo.displayName )</option>
+					}
+				#end
+                #end
+            </select>
+</td>
+<td>
+<input name="optionComboMofOcAll" id="optionComboMofOcAll"  type="checkbox">
+</td>
+</tr>
+<tr>
+<td>
+$i18n.getString( "optionComboMtm_oc" )
+</td>
+<td>
+            <select id="optionComboMtmId">
+                #foreach( $optionCombo in $ocs )
+				#if($optionCombo.id==$pbfDataElement.optionComboMtm.id){
+                    <option value="$optionCombo.id" selected="selected">$encoder.htmlEncode( $optionCombo.displayName )</option>
+				}#else{
+					<option value="$optionCombo.id">$encoder.htmlEncode( $optionCombo.displayName )</option>
+					}
+				#end
+                #end
+            </select>
+</td>
+<td>
+<input name="optionComboMtmOcAll" id="optionComboMtmOcAll"  type="checkbox">
+</td>
+</tr>
+<tr>
+<td>
+$i18n.getString( "optionComboMtf_oc" )
+</td>
+<td>
+            <select id="optionComboMtfId">
+                #foreach( $optionCombo in $ocs )
+				#if($optionCombo.id==$pbfDataElement.optionComboMtf.id){
+                    <option value="$optionCombo.id" selected="selected">$encoder.htmlEncode( $optionCombo.displayName )</option>
+				}#else{
+					<option value="$optionCombo.id">$encoder.htmlEncode( $optionCombo.displayName )</option>
+					}
+				#end
+                #end
+            </select>
+</td>
+<td>
+<input name="optionComboMtfOcAll" id="optionComboMtfOcAll"  type="checkbox">
+</td>
+</tr>
+<tr>
+<td>
+$i18n.getString( "optionComboMhm_oc" )
+</td>
+<td>
+            <select id="optionComboMhmId">
+                #foreach( $optionCombo in $ocs )
+				#if($optionCombo.id==$pbfDataElement.optionComboMhm.id){
+                    <option value="$optionCombo.id" selected="selected">$encoder.htmlEncode( $optionCombo.displayName )</option>
+				}#else{
+					<option value="$optionCombo.id">$encoder.htmlEncode( $optionCombo.displayName )</option>
+					}
+				#end
+                #end
+            </select>
+</td>
+<td>
+<input name="optionComboMhmOcAll" id="optionComboMhmOcAll"  type="checkbox">
+</td>
+</tr>
+<tr>
+<td>
+$i18n.getString( "optionComboMhf_oc" )
+</td>
+<td>
+            <select id="optionComboMhfId">
+                #foreach( $optionCombo in $ocs )
+				#if($optionCombo.id==$pbfDataElement.optionComboMhf.id){
+                    <option value="$optionCombo.id" selected="selected">$encoder.htmlEncode( $optionCombo.displayName )</option>
+				}#else{
+					<option value="$optionCombo.id">$encoder.htmlEncode( $optionCombo.displayName )</option>
+					}
+				#end
+                #end
+            </select>
+</td>
+<td>
+<input name="optionComboMhfOcAll" id="optionComboMhfOcAll"  type="checkbox">
+</td>
+</tr>
+
+
+
+
+
+
+
+
+
+
+<tr>
+<td>
+$i18n.getString( "facQtyDataSet_ds" )
+</td>
+<td>
+            <select id="facQtyDataSetId">
+                #foreach( $dataSet in $dss )
+				#if($dataSet.id==$pbfDataElement.facQtyDataSet.id){
+                    <option value="$dataSet.id" selected="selected">$encoder.htmlEncode( $dataSet.displayName )</option>
+				}#else{
+					<option value="$dataSet.id">$encoder.htmlEncode( $dataSet.displayName )</option>
+					}
+				#end
+                #end
+            </select>
+</td>
+<td>
+<input name="facQtyDataSetDsAll" id="facQtyDataSetDsAll"  type="checkbox">
+</td>
+</tr>
+<tr>
+<td>
+$i18n.getString( "intVerQtyDataSet_ds" )
+</td>
+<td>
+            <select id="intVerQtyDataSetId">
+                #foreach( $dataSet in $dss )
+				#if($dataSet.id==$pbfDataElement.intVerQtyDataSet.id){
+                    <option value="$dataSet.id" selected="selected">$encoder.htmlEncode( $dataSet.displayName )</option>
+				}#else{
+					<option value="$dataSet.id">$encoder.htmlEncode( $dataSet.displayName )</option>
+					}
+				#end
+                #end
+            </select>
+</td>
+<td>
+<input name="intVerQtyDataSetDsAll" id="intVerQtyDataSetDsAll"  type="checkbox">
+</td>
+</tr>
+<tr>
+<td>
+$i18n.getString( "extVerQtyDataSet_ds" )
+</td>
+<td>
+            <select id="extVerQtyDataSetId">
+                #foreach( $dataSet in $dss )
+				#if($dataSet.id==$pbfDataElement.extVerQtyDataSet.id){
+                    <option value="$dataSet.id" selected="selected">$encoder.htmlEncode( $dataSet.displayName )</option>
+				}#else{
+					<option value="$dataSet.id">$encoder.htmlEncode( $dataSet.displayName )</option>
+					}
+				#end
+                #end
+            </select>
+</td>
+<td>
+<input name="extVerQtyDataSetDsAll" id="extVerQtyDataSetDsAll"  type="checkbox">
+</td>
+</tr>
+<tr>
+<td>
+$i18n.getString( "hcDataSetIntVer_ds" )
+</td>
+<td>
+            <select id="hcDataSetIntVerId">
+                #foreach( $dataSet in $dss )
+				#if($dataSet.id==$pbfDataElement.hcDataSetIntVer.id){
+                    <option value="$dataSet.id" selected="selected">$encoder.htmlEncode( $dataSet.displayName )</option>
+				}#else{
+					<option value="$dataSet.id">$encoder.htmlEncode( $dataSet.displayName )</option>
+					}
+				#end
+                #end
+            </select>
+</td>
+<td>
+<input name="hcDataSetIntVerDsAll" id="hcDataSetIntVerDsAll"  type="checkbox">
+</td>
+</tr>
+<tr>
+<td>
+$i18n.getString( "hhDataSetIntVer_ds" )
+</td>
+<td>
+            <select id="hhDataSetIntVerId">
+                #foreach( $dataSet in $dss )
+				#if($dataSet.id==$pbfDataElement.hhDataSetIntVer.id){
+                    <option value="$dataSet.id" selected="selected">$encoder.htmlEncode( $dataSet.displayName )</option>
+				}#else{
+					<option value="$dataSet.id">$encoder.htmlEncode( $dataSet.displayName )</option>
+					}
+				#end
+                #end
+            </select>
+</td>
+<td>
+<input name="hhDataSetIntVerDsAll" id="hhDataSetIntVerDsAll"  type="checkbox">
+</td>
+</tr>
+<tr>
+<td>
+$i18n.getString( "hcDataSetExtVer_ds" )
+</td>
+<td>
+            <select id="hcDataSetExtVerId">
+                #foreach( $dataSet in $dss )
+				#if($dataSet.id==$pbfDataElement.hcDataSetExtVer.id){
+                    <option value="$dataSet.id" selected="selected">$encoder.htmlEncode( $dataSet.displayName )</option>
+				}#else{
+					<option value="$dataSet.id">$encoder.htmlEncode( $dataSet.displayName )</option>
+					}
+				#end
+                #end
+            </select>
+</td>
+<td>
+<input name="hcDataSetExtVerDsAll" id="hcDataSetExtVerDsAll"  type="checkbox">
+</td>
+</tr>
+<tr>
+<td>
+$i18n.getString( "hhDataSetExtVer_ds" )
+</td>
+<td>
+            <select id="hhDataSetExtVerId">
+                #foreach( $dataSet in $dss )
+				#if($dataSet.id==$pbfDataElement.hhDataSetExtVer.id){
+                    <option value="$dataSet.id" selected="selected">$encoder.htmlEncode( $dataSet.displayName )</option>
+				}#else{
+					<option value="$dataSet.id">$encoder.htmlEncode( $dataSet.displayName )</option>
+					}
+				#end
+                #end
+            </select>
+</td>
+<td>
+<input name="hhDataSetExtVerDsAll" id="hhDataSetExtVerDsAll"  type="checkbox">
+</td>
+</tr>
+
+
+
+
+</table>
+
+
+<div> 
+<textarea name="calculationFormulaRphc"  id="calculationFormulaRphc" rows=5 cols=200>
+$pbfDataElement.calculationFormulaRphc
+</textarea>
+</div>
+<div> 
+<textarea name="calculationFormulaPhc"  id="calculationFormulaPhc" rows=5 cols=200>
+$pbfDataElement.calculationFormulaPhc
+</textarea>
+</div>
+
+<div>
+
+<input type="button" value="Save" title="$i18n.getString('save')" style="width:50px" onclick="saveSelectCriteria();"/><br/>  
+
+</div>
+
+<div>
+	<ul class="sourcedefsdiv" style="list-style: none;">
+	</ul>
+</div>
+
+<script>
+
+
+
+function saveSelectCriteria(){
+
+    $('#dataElements :selected').each(function(i, selected){
+
+jQuery.ajax({
+   type: "POST",
+   url: "addUpdatedataElementDataSource.action",
+   data: "deid=" + jQuery('#dataElements').val()+"&decoid=" + jQuery('#dataElementCats').val()+ "&calculationFormula=" +jQuery('#calculationFormula').val(),
+   success: function(res){
+  //   alert( "Data Saved: " + res );
+    var pbfDataElements = res.getElementsByTagName( 'pbfDataElements' )[0];
+  var optionsList = res.getElementsByTagName( 'pbfDataElement' );
+  
+ $('.sourcedefsdiv').empty();
+ 
+  for ( var i = 0; i < optionsList.length; i++ )
+  {
+    var pbfDataElement = optionsList[i];
+    var name = pbfDataElement.firstChild.nodeValue;
+    var deid = pbfDataElement.getAttribute( 'deid' );   
+        var decoid = pbfDataElement.getAttribute( 'decoid' ); 
+    
+
+    $('.sourcedefsdiv').append("<li deid="+ deid +"><a href='javascript:removeSourceDef("+ deid +", "+ decoid +")' title='$i18n.getString( 'remove' )'>"+ name + "<img src='../images/delete.png' alt='$i18n.getString( 'remove' )'/></a></li>");
+    
+  }
+
+   }
+ });
+    });
+}
+
+
+
+function getCombos(){
+
+    $('#dataElements :selected').each(function(i, selected){
+
+jQuery.ajax({
+   type: "POST",
+   url: "getOptionCombos.action",
+   data: "dataElementId="+selected.value,
+   success: function(res){
+//     alert( "Data Saved: " + res );
+  var categoryOptions = res.getElementsByTagName( 'categoryOptions' )[0];
+  var optionsList = res.getElementsByTagName( 'categoryOption' );
+
+  var optionComboSelector = document.getElementById( 'dataElementCats' );
+  jQuery('#dataElementCats option').each(function(i, option){ $(option).remove(); });
+  
+  for ( var i = 0; i < optionsList.length; i++ )
+  {
+    var categoryOption = optionsList[i];
+    var name = categoryOption.firstChild.nodeValue;
+    var id = categoryOption.getAttribute( 'id' );   
+        
+    var option = new Option( name, id );
+        
+    optionComboSelector.add( option, null );
+  }
+
+   }
+ });
+    });
+}
+
+
+function getSourceDefs(){
+
+    $('#dataElementCats :selected').each(function(i, selected){
+
+jQuery.ajax({
+   type: "POST",
+   url: "getSourceDefinitions.action",
+   success: function(res){
+//     alert( "Data Saved: " + res );
+
+    var pbfDataElements = res.getElementsByTagName( 'pbfDataElements' )[0];
+  var optionsList = res.getElementsByTagName( 'pbfDataElement' );
+  
+ $('.sourcedefsdiv').empty();
+ 
+  for ( var i = 0; i < optionsList.length; i++ )
+  {
+    var pbfDataElement = optionsList[i];
+    var name = pbfDataElement.firstChild.nodeValue;
+    var deid = pbfDataElement.getAttribute( 'deid' );   
+        var decoid = pbfDataElement.getAttribute( 'decoid' ); 
+    
+
+    $('.sourcedefsdiv').append("<li deid="+ deid +"><a href='javascript:removeSourceDef("+ deid +", "+ decoid +")' title='$i18n.getString( 'remove' )'>"+ name + "<img src='../images/delete.png' alt='$i18n.getString( 'remove' )'/></a></li>");
+    
+  }
+
+   }
+ });
+    });
+}
+
+function removeSourceDef(deid, decoid) {
+
+	jQuery.ajax( {
+		type: "POST",
+		url: "deleteSourceDefinition.action",
+		data: "deid=" + deid + "&decoid=" +decoid,
+		success: function(res) {			
+    var pbfDataElements = res.getElementsByTagName( 'pbfDataElements' )[0];
+  var optionsList = res.getElementsByTagName( 'pbfDataElement' );
+  
+ $('.sourcedefsdiv').empty();
+ 
+  for ( var i = 0; i < optionsList.length; i++ )
+  {
+    var pbfDataElement = optionsList[i];
+    var name = pbfDataElement.firstChild.nodeValue;
+    var deid = pbfDataElement.getAttribute( 'deid' );   
+        var decoid = pbfDataElement.getAttribute( 'decoid' ); 
+    
+
+    $('.sourcedefsdiv').append("<li deid="+ deid +"><a href='javascript:removeSourceDef("+ deid +", "+ decoid +")' title='$i18n.getString( 'remove' )'>"+ name + "<img src='../images/delete.png' alt='$i18n.getString( 'remove' )'/></a></li>");
+    
+  }
+		},
+		error: function(res) {
+			alert("ERROR!");
+		}
+	});
+}
+
+
+jQuery(document).ready( function(){
+        $('#dataElements').dblclick(function() {
+        getCombos();
+        });
+        
+        $('#dataElementCats').dblclick(function() {
+        getSourceDefs();
+        });
+        
+        
+        $('#selectordiv').change(function() {
+        getSelected();
+        });
+    });
+
+</script>

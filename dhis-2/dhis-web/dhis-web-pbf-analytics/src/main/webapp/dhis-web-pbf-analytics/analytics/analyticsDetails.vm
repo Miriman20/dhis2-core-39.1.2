@@ -1,0 +1,151 @@
+  <style>
+
+  table{
+    border-collapse: collapse;
+    border-style: solid; border-width: 1px 1px 1px 1px; border-color: darkred;
+  }
+  table td{
+    border-style: solid; border-width: 1px 1px 1px 1px; border-color: darkred;
+  }
+  thead th{
+    border-style: solid; border-width: 1px 1px 1px 1px; border-color: darkred;
+  }
+  table tr{
+    height: 32px; background-color:#EEEEEE;
+	border-style: solid; border-width: 1px 1px 1px 1px; border-color: darkred;
+  }
+  </style>
+  
+<script type="text/javascript">
+	jQuery(document).ready(function(){	
+	
+	});
+
+	var i18n_confirm_delete = '$encoder.jsEscape( $i18n.getString( "confirm_delete_data_element" ) , "'")';
+	var i18n_none = '$encoder.jsEscape( $i18n.getString( "none" ) , "'")';
+	var i18n_yes = '$encoder.jsEscape( $i18n.getString( "yes" ) , "'")';
+	var i18n_no = '$encoder.jsEscape( $i18n.getString( "no" ) , "'")';
+	var i18n_number = '$encoder.jsEscape( $i18n.getString( "number" ) , "'")';
+	var i18n_yes_only = '$encoder.jsEscape( $i18n.getString( "yes_only" ) , "'")';
+	var i18n_yes_no = '$encoder.jsEscape( $i18n.getString( "yes_no" ) , "'")';
+	var i18n_text = '$encoder.jsEscape( $i18n.getString( "text" ) , "'")';
+	var i18n_date = '$encoder.jsEscape( $i18n.getString( "date" ) , "'")';	
+	var i18n_user_name = '$encoder.jsEscape( $i18n.getString( "user_name" ) , "'")';	
+	var i18n_sum = '$encoder.jsEscape( $i18n.getString( "sum" ) , "'")';
+	var i18n_average = '$encoder.jsEscape( $i18n.getString( "average" ) , "'")';
+	var i18n_aggregate = '$encoder.jsEscape( $i18n.getString( "aggregate" ) , "'")';
+	var i18n_patient = '$encoder.jsEscape( $i18n.getString( "patient" ) , "'")';
+	var i18n_translation_translate = '$encoder.jsEscape( $i18n.getString( "translation_translate" ) , "'")';
+	var i18n_edit = '$encoder.jsEscape( $i18n.getString( "edit" ) , "'")';
+	var i18n_remove = '$encoder.jsEscape( $i18n.getString( "remove" ) , "'")';
+	var i18n_show_details = '$encoder.jsEscape( $i18n.getString( "show_details" ) , "'")';
+	var i18n_name = '$encoder.jsEscape( $i18n.getString( "name" ) , "'")';
+	var i18n_operations = '$encoder.jsEscape( $i18n.getString( "operations" ) , "'")';
+</script>
+
+<div>
+							<input type="button" value="$i18n.getString( 'print' )" onclick="printDetails()" style="width:80px"/>
+</div>
+							<div>$pbfReport.reportName
+			</div>
+			
+			<div id="content">
+			<table class="" id="reportList">
+                <thead>
+					<tr>
+						<th style="width:325px; border-width: 1px 1px 1px 1px; border-color: darkred;">Номи нишондиҳанда</th>
+						<th style="width:95px; border-width: 1px 1px 1px 1px; border-color: darkred;">Шумораи ташкилот</th>
+						<th style="width:95px; border-width: 1px 1px 1px 1px; border-color: darkred;">Шумораи хадамот</th>
+						<th style="width:95px; border-width: 1px 1px 1px 1px; border-color: darkred;">Фарқият</th>
+						<th style="width:95px; border-width: 1px 1px 1px 1px; border-color: darkred;">Шумора барои пардохт</th>
+						<th style="width:95px; border-width: 1px 1px 1px 1px; border-color: darkred;">Сатри ҳисоб</th>
+						<th style="width:95px; border-width: 1px 1px 1px 1px; border-color: darkred;">Арзиши хизмат</th>
+						<th style="width:95px; border-width: 1px 1px 1px 1px; border-color: darkred;">Арзиши умумӣ</th>
+					</tr>
+				</thead>
+#set ($totam = 0)
+#set ($totdiscam = 0)
+#set ($totwithdiscam = 0)
+#set ($tottaxam = 0)
+#set ($totsocam = 0)
+#set ($totfacam = 0)
+#set ($totgrosam = 0)
+#set ($totnetam = 0)
+
+#set ($totfacval = 0)
+#set ($totverval = 0)
+#set ($totdiffval = 0)
+
+
+				<tbody id="list">
+				#foreach( $calc in $pbfCalculations )
+				<tr id="">
+					<td width="325px"> $calc.indicatorName $calc.ThresholdValue</td>
+					<td width="95px"> $calc.facilityQuarterValue </td>
+					<td width="95px"> $calc.quarterValueOrig </td>
+					<td width="95px"> #set($String = "abc") $String.format("%.2f", $calc.diffQuarterValue)  </td>
+					<td width="95px"> #set($String = "abc") $String.format("%.2f", $calc.quarterValue) </td>
+					<td width="95px"> $calc.basisValue </td>
+					<td width="95px"> $calc.unitPrice </td>
+					<td width="95px"> #set($String = "abc") $String.format("%.2f", $calc.quarterAmount) </td>
+				</tr>
+#set ($totam = $totam + $calc.quarterAmount)
+#set ($totdiscam = $totdiscam + $calc.discountAmount)
+#set ($totwithdiscam = $totwithdiscam + $calc.totalAmountWithDiscount)
+#set ($tottaxam = $tottaxam + $calc.taxAmount)
+#set ($totsocam = $totsocam + $calc.socialTaxAmount)
+#set ($totfacam = $totfacam + $calc.facilityAmount)
+#set ($totgrosam = $totgrosam + $calc.salaryAmount)
+#set ($totnetam = $totnetam + $calc.netGross)
+
+#set ($totfacval = $totfacval + $calc.facilityQuarterValue)
+#set ($totverval = $totverval + $calc.quarterValueOrig)
+#set ($totdiffval = $totdiffval + $calc.diffQuarterValue)
+
+
+				#end
+				
+				
+				
+				<tr id="">
+					<td width="325px"> $i18n.getString( "total" ) </td>
+					<td width="95px"> #set($String = "abc") $String.format("%.2f", $totfacval)  </td>
+					<td width="95px"> #set($String = "abc") $String.format("%.2f", $totverval) </td>
+					<td width="95px"> #set($String = "abc") $String.format("%.2f", $totdiffval)   </td>
+					<td width="95px"></td>
+					<td width="95px"> </td>
+					<td width="95px"> </td>
+					<td width="95px"> #set($String = "abc") $String.format("%.2f", $totam) </td>
+				</tr>
+				
+				</tbody>
+			</table>
+			
+			<p>
+#set ($vare = $totalQualityScore*100/$qualityScore)
+			<table>
+<tr><td colspan=3 width="400px">$i18n.getString( 'total_excl' )</td><td> #set($String = "abc") $String.format("%.2f", $totam) </td></tr>
+<tr><td width="400px">$i18n.getString( 'total_disc' )</td><td width="200px"> #set($String = "abc") $String.format("%.1f", $totalQualityScore)</td><td width="200px">#set($String = "abc") $String.format("%.2f", $vare)%</td><td width="200px">#set($String = "abc") $String.format("%.2f", $totdiscam)</td></tr>
+<tr><td colspan=3 width="400px">$i18n.getString( 'total_with_disc' )</td><td>#set($String = "abc") $String.format("%.2f", $totwithdiscam)</td></tr>
+<tr><td colspan=3 width="400px">$i18n.getString( 'total_fac' )</td><td>#set($String = "abc") $String.format("%.2f", $totfacam)</td></tr>
+<tr><td colspan=3 width="400px">$i18n.getString( 'total_gross' )</td><td>#set($String = "abc") $String.format("%.2f", $totgrosam)</td></tr>
+
+
+
+
+</table>
+			<script type="text/javascript">	
+function printDetails(){
+/*var url = "../dhis-web-calcs/displayReport.action" + 
+	"?ds=" + dataSetReport.ds +
+    "&pe=" + dataSetReport.pe +
+    "&endPe=" + dataSetReport.endPe +
+    "&selectedUnitOnly=" + dataSetReport.selectedUnitOnly +
+    "&ou=" + dataSetReport.ou;
+    
+window.location.href = url;
+*/
+        window.location.href = '../dhis-web-pbf/displayPbfCalcsReport.action?id=$pbfReport.id&ds=5';
+};
+	</script>	
+

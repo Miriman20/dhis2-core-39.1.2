@@ -81,7 +81,7 @@ async function clone (name, url, clone_path, treeish) {
                     process.exit(1)
                 }
                 console.log(`[clone] [${name}] failed, retrying`)
-                await exec(`rm -rf ${clone_path}`)
+                await exec(`del -rf ${clone_path}`)
                 retries++
             }
         }

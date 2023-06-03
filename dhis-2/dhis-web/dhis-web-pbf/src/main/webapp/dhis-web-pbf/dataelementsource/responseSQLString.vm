@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataElementDataSource>
+  <pbfDataElements>
+  #foreach( $pbfDataElement in $pbfDataElements )	
+	  <pbfDataElement deid="$pbfDataElement.dataElement.id" decoid="$pbfDataElement.optionCombo.id" >$pbfDataElement.dataElement.name $pbfDataElement.optionCombo.name $pbfDataElement.calculationFormula</pbfDataElement>
+  #end	
+  </pbfDataElements>
+</dataElementDataSource>
+
+  

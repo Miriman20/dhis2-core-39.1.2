@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"
+  [<!ENTITY identifiableProperties SYSTEM "classpath://org/hisp/dhis/common/identifiableProperties.hbm">]
+  >
+
+<hibernate-mapping>
+	<class name="org.hisp.dhis.pbf.model.PbfAnalyticsQualityDetails" table="pbfanalyticsqualitydata">
+
+		<composite-id>
+			<key-many-to-one name="dataElement"
+				class="org.hisp.dhis.dataelement.DataElement" column="dataelementid"
+				foreign-key="fk_pbfcalcsmax_dataelementid" />
+			<key-many-to-one name="periodQuarter" class="org.hisp.dhis.period.Period"
+				column="qtrperiodid" foreign-key="fk_pbfcalcsmax_periodid" />
+			<key-many-to-one name="orgUnit"
+				class="org.hisp.dhis.organisationunit.OrganisationUnit" column="unitid"
+				foreign-key="fk_pbfcalcsmax_organisationunitid" />
+			<key-many-to-one name="optionCombo"
+				class="org.hisp.dhis.category.CategoryOptionCombo"
+				column="optioncomboid" foreign-key="fk_pbfcalcsmax_categoryoptioncomboid" />
+		</composite-id>
+	
+	 <many-to-one name="dataSetMax" class="org.hisp.dhis.dataset.DataSet" column="dataSetMax" lazy="false" />
+	 
+	 <many-to-one name="sectionMax" class="org.hisp.dhis.dataset.Section" column="sectionMax" lazy="false" />
+	 	
+		<property name="sortOrder" />
+			 	
+		<property name="sectionSortOrder" />
+		
+		<property name="indicatorName" column="indicatorName"
+			not-null="true" length="530" />
+				
+		<property name="indicatorValueInt" column="indicatorValueInt"
+			not-null="false"/>
+			
+		<property name="indicatorValueExt" column="indicatorValueExt"
+			not-null="false"/>
+			
+		<property name="indicatorNameEn" column="indicatorNameEn"
+			not-null="false" length="530" />
+			
+		<property name="sectionName" column="sectionName"
+			not-null="true" length="530" />
+			
+		<!--property name="subSectionName" column="subSectionName"
+			not-null="true" length="530" /-->
+			
+		<property name="sectionNameEn" column="sectionNameEn"
+			not-null="false" length="530" />
+						
+		<!--property name="subSectionNameEn" column="subSectionNameEn"
+			not-null="true" length="530" /-->
+			
+		<property name="facilityName" column="facilityName" not-null="false"
+			length="530" />
+		<property name="districtName" column="districtName" not-null="false"
+			length="530" />
+		<property name="provinceName" column="provinceName" not-null="false"
+			length="530" />
+		<property name="countryName" column="countryName" not-null="true"
+			length="530" />
+
+		<property name="facilityNameEn" column="facilityNameEn" not-null="false"
+			length="530" />
+		<property name="districtNameEn" column="districtNameEn" not-null="false"
+			length="530" />
+		<property name="provinceNameEn" column="provinceNameEn" not-null="false"
+			length="530" />
+		<property name="countryNameEn" column="countryNameEn" not-null="false"
+			length="530" />
+
+		<property name="facilityType" column="facilityType"/>
+
+		<property name="periodName" column="periodName" not-null="true"/>
+			 
+		<property name="quarterQtyMax" />
+
+		<property name="quarterQtyIntVer" />
+
+		<property name="quarterQtyExtVer" />
+
+		<!--property name="storedBy" column="storedBy" not-null="true"
+			length="130" />
+
+		<property name="updatedBy" column="updatedBy" length="130" />
+
+		<property name="created" type="timestamp" />
+
+		<property name="lastUpdated" type="timestamp" /-->
+
+	</class>
+</hibernate-mapping>

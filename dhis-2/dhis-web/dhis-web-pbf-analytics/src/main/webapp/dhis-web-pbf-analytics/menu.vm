@@ -1,0 +1,28 @@
+
+<h2>$i18n.getString( "pbf" )&nbsp;</h2>
+
+<h2>$i18n.getString( "pbf_analytics_reports" )&nbsp;</h2>
+<ul>
+
+	<li><a href="showReportPeriodForQuantityAnalytics.action">$i18n.getString( "pbf_report_period_for_quantity_analytics" )&nbsp;</a></li>
+
+	<li><a href="showQuanAnalReportParamsForm.action">$i18n.getString( "quantity_select" )&nbsp;</a></li>	
+	
+	<li><a href="showReportPeriodForQualityAnalytics.action">$i18n.getString( "pbf_report_period_for_quality_analytics" )&nbsp;</a></li>
+
+	<li><a href="showQualAnalReportParamsForm.action">$i18n.getString( "quality_select" )&nbsp;</a></li>
+	
+</ul>
+
+<h2>$i18n.getString( "pbf_analytics_olap" )&nbsp;</h2>
+<ul>
+<a href="showQuantityAnalyticsDataPivot.action">$i18n.getString( "analytics_olap" )&nbsp;</a>
+</ul>
+
+<ul>
+<a href="showCalculationAmountsPivot.action">$i18n.getString( "analytics_olap_sums" )&nbsp;</a>
+</ul>
+
+<ul>
+<a href="showAnalyticalDataPivot.action">$i18n.getString( "analytics_olap_new" )&nbsp;</a>
+</ul>

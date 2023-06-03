@@ -1,0 +1,14 @@
+
+<h2>$i18n.getString( "pbf" )&nbsp;</h2>
+
+
+<h2>$i18n.getString( "pbf_configuration_and_reports" )&nbsp;</h2>
+<ul>
+	<li><a href="pbfDataElements.action">$i18n.getString( "pbf_configure_calculations" )&nbsp;</a></li>
+</ul>
+<ul>
+	<li><a href="showExcelDataEntryParamsForm.action">$i18n.getString( "pbf_get_offline_excel_files" )&nbsp;</a></li>
+</ul>
+<ul>
+	<li><a href="showExcelDataEntryParamsFormExt.action">$i18n.getString( "pbf_get_offline_excel_files_ext" )&nbsp;</a></li>
+</ul>

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"
+  [<!ENTITY identifiableProperties SYSTEM "classpath://org/hisp/dhis/common/identifiableProperties.hbm">]
+  >
+
+<hibernate-mapping>
+  <class name="org.hisp.dhis.pbf.model.PbfReport" table="pbfreport">
+
+    <id name="id" column="reportid">
+      <generator class="native" />
+    </id>
+
+    <property name="reportName" column="reportName" not-null="true" length="230" />
+    
+    <property name="reportCalcDetails" column="reportCalcDetails" not-null="true" length="230" />
+    
+    <property name="storedBy" column="storedBy" not-null="true" length="130" />
+    
+    <property name="updatedBy" column="updatedBy" length="130" />
+
+    <property name="created" type="timestamp" />
+
+    <property name="lastUpdated" type="timestamp" />
+    
+        <many-to-one name="reportPeriod" class="org.hisp.dhis.pbf.model.PbfReportPeriod" column="reportperiodid" lazy="false"/>
+            
+        <many-to-one name="orgUnit" class="org.hisp.dhis.organisationunit.OrganisationUnit" column="orgunitid" lazy="false"/>
+        
+  </class>
+</hibernate-mapping>

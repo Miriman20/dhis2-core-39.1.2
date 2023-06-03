@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+    <workbook>
+        <worksheet idx="0">
+            <section startRow="0" endRow="17">
+            <mapping cell="B37">metaobject.userid</mapping>
+            <mapping cell="B38">metaobject.orgunitid</mapping>
+            <mapping cell="B39">metaobject.datasetid</mapping>
+            <mapping cell="B40">metaobject.periodid</mapping>            
+            
+            <mapping cell="B42">metaobject.plan1</mapping>
+            <mapping cell="B43">metaobject.plan2</mapping>
+            <mapping cell="B44">metaobject.plan3</mapping>
+            <mapping cell="B45">metaobject.plan4</mapping>
+            <mapping cell="B46">metaobject.plan6</mapping>
+            <mapping cell="B47">metaobject.phccontrol</mapping>
+            
+            <mapping cell="B49">metaobject.plan1de</mapping>
+            <mapping cell="B50">metaobject.plan2de</mapping>
+            <mapping cell="B51">metaobject.plan3de</mapping>
+            <mapping cell="B52">metaobject.plan4de</mapping>
+            <mapping cell="B53">metaobject.plan6de</mapping>
+            <mapping cell="B54">metaobject.phccontrolde</mapping>
+            
+            <mapping cell="B56">metaobject.plan1ac</mapping>
+            <mapping cell="B57">metaobject.plan2ac</mapping>
+            <mapping cell="B58">metaobject.plan3ac</mapping>
+            <mapping cell="B59">metaobject.plan4ac</mapping>
+            <mapping cell="B60">metaobject.plan6ac</mapping>
+            
+                        
+            <mapping cell="C56">metaobject.plan1cco</mapping>
+            <mapping cell="C57">metaobject.plan2cco</mapping>
+            <mapping cell="C58">metaobject.plan3cco</mapping>
+            <mapping cell="C59">metaobject.plan4cco</mapping>
+            <mapping cell="C60">metaobject.plan6cco</mapping>
+            
+                        
+            <mapping cell="E56">metaobject.plan1ccn</mapping>
+            <mapping cell="E57">metaobject.plan2ccn</mapping>
+            <mapping cell="E58">metaobject.plan3ccn</mapping>
+            <mapping cell="E59">metaobject.plan4ccn</mapping>
+            <mapping cell="E60">metaobject.plan6ccn</mapping>
+            
+            <mapping cell="B61">metaobject.phccontrolcc</mapping>
+            </section>
+        </worksheet>
+        
+    </workbook>

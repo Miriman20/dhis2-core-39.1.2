@@ -1,0 +1,33 @@
+[
+#foreach( $pbfAnalyticsReport in $pbfQualityAnalyticsReports )
+
+#if($memberCount==$foreach.count)
+  {
+    "Мамлакат": "$!{pbfAnalyticsReport.getCountryName()}",
+    "Вилоят": "$!{pbfAnalyticsReport.getProvinceName()}",
+	"Ноҳия": "$!{pbfAnalyticsReport.getDistrictName()}",
+	"Муассиса": "$!{pbfAnalyticsReport.getFacilityName()}",
+	"Нишондиҳанда": "$!{pbfAnalyticsReport.getIndicatorName()}",
+	"Боб": "$!{pbfAnalyticsReport.getSectionName()}",
+	"Типи муассиса": "$!{pbfAnalyticsReport.getFacilityType()}",
+	"Чоряк": "$!{pbfAnalyticsReport.getPeriodName()}",
+	"Баҳои хадамот": "$!{pbfAnalyticsReport.getIndicatorValueInt()}",
+	"Баҳои санҷишӣ": "$!{pbfAnalyticsReport.getIndicatorValueExt()}"
+  }
+#else 
+  {
+    "Мамлакат": "$!{pbfAnalyticsReport.getCountryName()}",
+    "Вилоят": "$!{pbfAnalyticsReport.getProvinceName()}",
+	"Ноҳия": "$!{pbfAnalyticsReport.getDistrictName()}",
+	"Муассиса": "$!{pbfAnalyticsReport.getFacilityName()}",
+	"Нишондиҳанда": "$!{pbfAnalyticsReport.getIndicatorName()}",
+	"Боб": "$!{pbfAnalyticsReport.getSectionName()}",
+	"Типи муассиса": "$!{pbfAnalyticsReport.getFacilityType()}",
+	"Чоряк": "$!{pbfAnalyticsReport.getPeriodName()}",
+	"Баҳои хадамот": "$!{pbfAnalyticsReport.getIndicatorValueInt()}",
+	"Баҳои санҷишӣ": "$!{pbfAnalyticsReport.getIndicatorValueExt()}"
+  },
+#end
+  
+#end
+]

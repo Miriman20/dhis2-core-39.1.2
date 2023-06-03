@@ -1,0 +1,43 @@
+[
+#foreach( $pbfAnalyticsReport in $pbfAnalyticsReports )
+
+#if($memberCount==$foreach.count)
+  {
+    "Мамлакат": "$!{pbfAnalyticsReport.getCountryName()}",
+    "Вилоят": "$!{pbfAnalyticsReport.getProvinceName()}",
+	"Ноҳия": "$!{pbfAnalyticsReport.getDistrictName()}",
+	"Муассиса": "$!{pbfAnalyticsReport.getFacilityName()}",
+	"Нишондиҳанда": "$!{pbfAnalyticsReport.getIndicatorName()}",
+	"Чоряк": "$!{pbfAnalyticsReport.getPeriodName()}",
+	"Моҳи аввал": "$!{pbfAnalyticsReport.getMonthOne()}",
+	"Моҳи дуюм": "$!{pbfAnalyticsReport.getMonthTwo()}",
+	"Моҳи сеюм": "$!{pbfAnalyticsReport.getMonthThree()}",
+	"Шумораи чорякии муассиса": "$!{pbfAnalyticsReport.getQuarterQtyFacility()}",
+	"Шумораи чорякии хадамот": "$!{pbfAnalyticsReport.getQuarterQtyIntVer()}",
+	"Шумораи чорякии беруна": "$!{pbfAnalyticsReport.getQuarterQtyExtVer()}",
+	"Ҳамагӣ балҳои сифат": "$!{pbfAnalyticsReport.getQualityScore()}",
+	"Арзиши сатрӣ": "$!{pbfAnalyticsReport.getThresholdValue()}",
+	"Арзиш": $!{pbfAnalyticsReport.getQuarterQtyIntVerThreshold()}
+  }
+#else 
+  {
+    "Мамлакат": "$!{pbfAnalyticsReport.getCountryName()}",
+    "Вилоят": "$!{pbfAnalyticsReport.getProvinceName()}",
+	"Ноҳия": "$!{pbfAnalyticsReport.getDistrictName()}",
+	"Муассиса": "$!{pbfAnalyticsReport.getFacilityName()}",
+	"Нишондиҳанда": "$!{pbfAnalyticsReport.getIndicatorName()}",
+	"Чоряк": "$!{pbfAnalyticsReport.getPeriodName()}",
+	"Моҳи аввал": "$!{pbfAnalyticsReport.getMonthOne()}",
+	"Моҳи дуюм": "$!{pbfAnalyticsReport.getMonthTwo()}",
+	"Моҳи сеюм": "$!{pbfAnalyticsReport.getMonthThree()}",
+	"Шумораи чорякии муассиса": "$!{pbfAnalyticsReport.getQuarterQtyFacility()}",
+	"Шумораи чорякии хадамот": "$!{pbfAnalyticsReport.getQuarterQtyIntVer()}",
+	"Шумораи чорякии беруна": "$!{pbfAnalyticsReport.getQuarterQtyExtVer()}",
+	"Ҳамагӣ балҳои сифат": "$!{pbfAnalyticsReport.getQualityScore()}",
+	"Арзиши сатрӣ": "$!{pbfAnalyticsReport.getThresholdValue()}",
+	"Арзиш": $!{pbfAnalyticsReport.getQuarterQtyIntVerThreshold()}
+  },
+#end
+  
+#end
+]

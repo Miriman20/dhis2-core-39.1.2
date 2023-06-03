@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:aop="http://www.springframework.org/schema/aop"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
+    
+<!-- <?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd"> -->
+
+  <bean id="org.hisp.dhis.pbf.action.NoAction" class="org.hisp.dhis.pbf.action.NoAction" />
+
+<!-- PBF -->
+
+	<!-- Excel Reports -->
+
+ <bean id="org.hisp.dhis.pbf.excelreports.GetControlReportParamsAction" class="org.hisp.dhis.pbf.excelreports.GetControlReportParamsAction"
+    scope="prototype">
+    <property name="organisationUnitService" ref="org.hisp.dhis.organisationunit.OrganisationUnitService" />
+    <property name="selectionTreeManager" ref="org.hisp.dhis.oust.manager.SelectionTreeManager" />   
+    <property name="organisationUnitGroupService" ref="org.hisp.dhis.organisationunit.OrganisationUnitGroupService" />
+  </bean>
+    
+ <bean id="org.hisp.dhis.pbf.excelreports.ProduceControlReportAction" class="org.hisp.dhis.pbf.excelreports.ProduceControlReportAction"
+    scope="prototype">
+    <property name="pbfService">
+            <ref bean="org.hisp.dhis.pbf.api.PbfService" />
+        </property>
+     <property name="periodService" ref="org.hisp.dhis.period.PeriodService" />   
+    <property name="organisationUnitService" ref="org.hisp.dhis.organisationunit.OrganisationUnitService" />
+    <property name="selectionTreeManager" ref="org.hisp.dhis.oust.manager.SelectionTreeManager" />   
+    <property name="organisationUnitGroupService" ref="org.hisp.dhis.organisationunit.OrganisationUnitGroupService" />
+  </bean>
+    
+ <bean id="org.hisp.dhis.pbf.excelreports.ProduceCalculationsReportAction" class="org.hisp.dhis.pbf.excelreports.ProduceCalculationsReportAction"
+    scope="prototype">
+    <property name="pbfService">
+            <ref bean="org.hisp.dhis.pbf.api.PbfService" />
+        </property>
+     <property name="periodService" ref="org.hisp.dhis.period.PeriodService" />
+  </bean>
+
+ <bean id="org.hisp.dhis.pbf.excelreports.GetQuarterlySummaryReportParamsAction" class="org.hisp.dhis.pbf.excelreports.GetQuarterlySummaryReportParamsAction"
+    scope="prototype">
+    <property name="organisationUnitService" ref="org.hisp.dhis.organisationunit.OrganisationUnitService" />
+    <property name="selectionTreeManager" ref="org.hisp.dhis.oust.manager.SelectionTreeManager" />   
+    <property name="organisationUnitGroupService" ref="org.hisp.dhis.organisationunit.OrganisationUnitGroupService" />
+  </bean>
+    
+ <bean id="org.hisp.dhis.pbf.excelreports.ProduceQuarterlySummaryReportAction" class="org.hisp.dhis.pbf.excelreports.ProduceQuarterlySummaryReportAction"
+    scope="prototype">
+    <property name="pbfService">
+            <ref bean="org.hisp.dhis.pbf.api.PbfService" />
+        </property>
+     <property name="periodService" ref="org.hisp.dhis.period.PeriodService" />   
+    <property name="organisationUnitService" ref="org.hisp.dhis.organisationunit.OrganisationUnitService" />
+    <property name="selectionTreeManager" ref="org.hisp.dhis.oust.manager.SelectionTreeManager" />   
+    <property name="organisationUnitGroupService" ref="org.hisp.dhis.organisationunit.OrganisationUnitGroupService" />
+  </bean>
+
+<!-- Report Period -->
+        
+    <bean id="org.hisp.dhis.pbf.reportperiod.ShowReportPeriodAction"
+        class="org.hisp.dhis.pbf.reportperiod.ShowReportPeriodAction"
+        scope="prototype">
+        <property name="pbfService">
+            <ref bean="org.hisp.dhis.pbf.api.PbfService" />
+        </property>
+        <property name="currentUserService" ref="org.hisp.dhis.user.CurrentUserService" />
+    </bean>
+        
+    <bean id="org.hisp.dhis.pbf.reportperiod.ShowAddReportPeriodAction"
+        class="org.hisp.dhis.pbf.reportperiod.ShowAddReportPeriodAction"
+        scope="prototype">
+        <!--property name="pbfService">
+            <ref bean="org.hisp.dhis.pbf.api.PbfService" />
+        </property>
+        <property name="currentUserService" ref="org.hisp.dhis.user.CurrentUserService" />
+        <property name="periodService" ref="org.hisp.dhis.period.PeriodService" /-->
+    </bean>
+        
+    <bean id="org.hisp.dhis.pbf.reportperiod.ShowUpdateReportPeriodAction"
+        class="org.hisp.dhis.pbf.reportperiod.ShowUpdateReportPeriodAction"
+        scope="prototype">
+        <property name="pbfService">
+            <ref bean="org.hisp.dhis.pbf.api.PbfService" />
+        </property>
+        <property name="currentUserService" ref="org.hisp.dhis.user.CurrentUserService" />
+        <property name="periodService" ref="org.hisp.dhis.period.PeriodService" />
+    </bean>
+            
+    <bean id="org.hisp.dhis.pbf.reportperiod.AddReportPeriodAction"
+        class="org.hisp.dhis.pbf.reportperiod.AddReportPeriodAction"
+        scope="prototype">
+        <property name="pbfService">
+            <ref bean="org.hisp.dhis.pbf.api.PbfService" />
+        </property>
+        <property name="currentUserService" ref="org.hisp.dhis.user.CurrentUserService" />
+        <property name="periodService" ref="org.hisp.dhis.period.PeriodService" />
+    </bean>
+        
+    <bean id="org.hisp.dhis.pbf.reportperiod.UpdateReportPeriodAction"
+        class="org.hisp.dhis.pbf.reportperiod.UpdateReportPeriodAction"
+        scope="prototype">
+        <property name="pbfService">
+            <ref bean="org.hisp.dhis.pbf.api.PbfService" />
+        </property>
+        <property name="currentUserService" ref="org.hisp.dhis.user.CurrentUserService" />
+        <property name="periodService" ref="org.hisp.dhis.period.PeriodService" />
+    </bean>
+        
+    <bean id="org.hisp.dhis.pbf.reportperiod.DeleteReportPeriodAction"
+        class="org.hisp.dhis.pbf.reportperiod.DeleteReportPeriodAction"
+        scope="prototype">
+        <property name="pbfService">
+            <ref bean="org.hisp.dhis.pbf.api.PbfService" />
+        </property>
+        <property name="currentUserService" ref="org.hisp.dhis.user.CurrentUserService" />
+        <property name="periodService" ref="org.hisp.dhis.period.PeriodService" />
+    </bean>
+         <!-- Calculations -->
+        
+    <bean id="org.hisp.dhis.pbf.calcs.ShowCalculationAction"
+        class="org.hisp.dhis.pbf.calcs.ShowCalculationAction"
+        scope="prototype">
+        <property name="pbfService">
+            <ref bean="org.hisp.dhis.pbf.api.PbfService" />
+        </property>
+        <property name="currentUserService" ref="org.hisp.dhis.user.CurrentUserService" />
+    </bean>         
+        
+    <bean id="org.hisp.dhis.pbf.calcs.CalculateDetailsAction"
+        class="org.hisp.dhis.pbf.calcs.CalculateDetailsAction"
+        scope="prototype">
+        <property name="pbfService">
+            <ref bean="org.hisp.dhis.pbf.api.PbfService" />
+        </property>
+        <property name="organisationUnitService"
+			ref="org.hisp.dhis.organisationunit.OrganisationUnitService" />
+        <property name="currentUserService" ref="org.hisp.dhis.user.CurrentUserService" />
+        <property name="dataValueService" ref="org.hisp.dhis.datavalue.DataValueService" />
+        <property name="dataElementService" ref="org.hisp.dhis.dataelement.DataElementService" />
+        <property name="categoryService" ref="org.hisp.dhis.category.CategoryService" />
+        <property name="indicatorService" ref="org.hisp.dhis.indicator.IndicatorService" />
+        <property name="periodService" ref="org.hisp.dhis.period.PeriodService" />        
+        <property name="dataSetService" ref="org.hisp.dhis.dataset.DataSetService" />
+    </bean>  
+                     
+    <bean id="org.hisp.dhis.pbf.calcs.CalculateDetailsSingleUnitAction"
+        class="org.hisp.dhis.pbf.calcs.CalculateDetailsSingleUnitAction"
+        scope="prototype">
+        <property name="pbfService">
+            <ref bean="org.hisp.dhis.pbf.api.PbfService" />
+        </property>
+        <property name="organisationUnitService"
+			ref="org.hisp.dhis.organisationunit.OrganisationUnitService" />
+        <property name="currentUserService" ref="org.hisp.dhis.user.CurrentUserService" />
+        <property name="dataValueService" ref="org.hisp.dhis.datavalue.DataValueService" />
+        <property name="dataElementService" ref="org.hisp.dhis.dataelement.DataElementService" />
+        <property name="categoryService" ref="org.hisp.dhis.category.CategoryService" />
+        <property name="indicatorService" ref="org.hisp.dhis.indicator.IndicatorService" />
+        <property name="periodService" ref="org.hisp.dhis.period.PeriodService" />        
+        <property name="dataSetService" ref="org.hisp.dhis.dataset.DataSetService" />
+    </bean>  
+
+             <!-- EXternal Verification Calculations -->
+        
+    <bean id="org.hisp.dhis.pbf.calcs.extver.ShowCalculationAction"
+        class="org.hisp.dhis.pbf.calcs.extver.ShowCalculationAction"
+        scope="prototype">
+        <property name="pbfService">
+            <ref bean="org.hisp.dhis.pbf.api.PbfService" />
+        </property>
+        <property name="currentUserService" ref="org.hisp.dhis.user.CurrentUserService" />
+    </bean>         
+                     
+    <bean id="org.hisp.dhis.pbf.calcs.extver.CalculateDetailsSingleUnitAction"
+        class="org.hisp.dhis.pbf.calcs.extver.CalculateDetailsSingleUnitAction"
+        scope="prototype">
+        <property name="pbfService">
+            <ref bean="org.hisp.dhis.pbf.api.PbfService" />
+        </property>
+        <property name="organisationUnitService"
+			ref="org.hisp.dhis.organisationunit.OrganisationUnitService" />
+        <property name="currentUserService" ref="org.hisp.dhis.user.CurrentUserService" />
+        <property name="dataValueService" ref="org.hisp.dhis.datavalue.DataValueService" />
+        <property name="dataElementService" ref="org.hisp.dhis.dataelement.DataElementService" />
+        <property name="categoryService" ref="org.hisp.dhis.category.CategoryService" />
+        <property name="indicatorService" ref="org.hisp.dhis.indicator.IndicatorService" />
+        <property name="periodService" ref="org.hisp.dhis.period.PeriodService" />        
+        <property name="dataSetService" ref="org.hisp.dhis.dataset.DataSetService" />
+    </bean> 
+        
+    <bean id="org.hisp.dhis.pbf.calcs.extver.ShowCalculationDetailsAction"
+        class="org.hisp.dhis.pbf.calcs.extver.ShowCalculationDetailsAction"
+        scope="prototype">
+        <property name="pbfService">
+            <ref bean="org.hisp.dhis.pbf.api.PbfService" />
+        </property>
+        <property name="currentUserService" ref="org.hisp.dhis.user.CurrentUserService" />
+    </bean>
+        
+         <!-- Reports -->      
+        
+    <bean id="org.hisp.dhis.pbf.calcs.ShowCalculationDetailsAction"
+        class="org.hisp.dhis.pbf.calcs.ShowCalculationDetailsAction"
+        scope="prototype">
+        <property name="pbfService">
+            <ref bean="org.hisp.dhis.pbf.api.PbfService" />
+        </property>
+        <property name="currentUserService" ref="org.hisp.dhis.user.CurrentUserService" />
+    </bean>
+
+
+	<!-- Xdocs -->
+	
+	<bean id="org.hisp.dhis.pbf.docx.DisplayReport" class="org.hisp.dhis.pbf.docx.DisplayReport"
+		scope="prototype">
+		<property name="organisationUnitService"
+			ref="org.hisp.dhis.organisationunit.OrganisationUnitService" />
+		<property name="periodService" ref="org.hisp.dhis.period.PeriodService" />
+		<property name="dataElementService" ref="org.hisp.dhis.dataelement.DataElementService" />
+		<property name="indicatorService" ref="org.hisp.dhis.indicator.IndicatorService" />
+		<property name="dataValueService" ref="org.hisp.dhis.datavalue.DataValueService" />
+		<property name="categoryService"
+			ref="org.hisp.dhis.category.CategoryService" />
+		<property name="currentUserService" ref="org.hisp.dhis.user.CurrentUserService" />
+		<property name="docxService" ref="org.hisp.dhis.pbf.docx.api.DocxService" />
+	</bean>
+
+	<bean id="org.hisp.dhis.pbf.docx.DisplayPbfCalcsReport" class="org.hisp.dhis.pbf.docx.DisplayPbfCalcsReport"
+		scope="prototype">
+		<property name="organisationUnitService"
+			ref="org.hisp.dhis.organisationunit.OrganisationUnitService" />
+		<property name="periodService" ref="org.hisp.dhis.period.PeriodService" />
+		<property name="dataElementService" ref="org.hisp.dhis.dataelement.DataElementService" />
+		<property name="indicatorService" ref="org.hisp.dhis.indicator.IndicatorService" />
+		<property name="dataValueService" ref="org.hisp.dhis.datavalue.DataValueService" />
+		<property name="categoryService"
+			ref="org.hisp.dhis.category.CategoryService" />
+		<property name="currentUserService" ref="org.hisp.dhis.user.CurrentUserService" />
+		<property name="docxService" ref="org.hisp.dhis.pbf.docx.api.DocxService" />
+		<property name="pbfService" ref="org.hisp.dhis.pbf.api.PbfService" />
+	</bean>
+
+	<bean id="org.hisp.dhis.pbf.docx.GetDocxReportParamsAction"
+		class="org.hisp.dhis.pbf.docx.GetDocxReportParamsAction" scope="prototype">
+		<property name="docxService" ref="org.hisp.dhis.pbf.docx.api.DocxService" />
+		<property name="organisationUnitService"
+			ref="org.hisp.dhis.organisationunit.OrganisationUnitService" />
+		<property name="selectionTreeManager"
+			ref="org.hisp.dhis.oust.manager.SelectionTreeManager" />
+		<property name="organisationUnitGroupService"
+			ref="org.hisp.dhis.organisationunit.OrganisationUnitGroupService" />
+	</bean>
+
+	<!-- End Xdocs -->
+	       
+</beans>

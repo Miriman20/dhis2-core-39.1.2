@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:bean="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean:component-scan base-package="org.hisp.dhis.pbf"/>
+	<!-- PBF -->
+
+  <bean id="org.hisp.dhis.pbf.model.PbfReport" class="org.hisp.dhis.pbf.model.PbfReport">
+  </bean>
+
+  <bean id="org.hisp.dhis.pbf.model.PbfReportPeriod" class="org.hisp.dhis.pbf.model.PbfReportPeriod">
+  </bean>
+
+  <bean id="org.hisp.dhis.pbf.api.PbfStore" class="org.hisp.dhis.pbf.hibernate.HibernatePbfStore">
+    <constructor-arg name="sessionFactory" ref="sessionFactory" />
+    <constructor-arg name="cacheable" value="true" />
+    <constructor-arg name="clazz" value="org.hisp.dhis.pbf.model.PbfReportPeriod"/>
+  </bean>
+
+  <bean id="org.hisp.dhis.pbf.api.PbfService" class="org.hisp.dhis.pbf.api.DefaultPbfService">
+    <property name="pbfStore" ref="org.hisp.dhis.pbf.api.PbfStore" />
+  </bean>
+
+<!-- Docx -->
+
+  <bean id="org.hisp.dhis.pbf.docx.api.DocxStore" class="org.hisp.dhis.pbf.docx.hibernate.HibernateDocxStore">
+    <constructor-arg name="sessionFactory" ref="sessionFactory" />
+    <constructor-arg name="cacheable" value="true" />
+    <constructor-arg name="clazz" value="org.hisp.dhis.pbf.docx.model.WordReport" />
+  </bean>
+
+  <bean id="org.hisp.dhis.pbf.docx.model.WordReport" class="org.hisp.dhis.pbf.docx.model.WordReport">
+  </bean>
+
+  <bean id="org.hisp.dhis.pbf.docx.api.DocxService" class="org.hisp.dhis.pbf.docx.api.DefaultDocxService">
+    <property name="docxStore" ref="org.hisp.dhis.pbf.docx.api.DocxStore" />
+  </bean>
+
+</beans>

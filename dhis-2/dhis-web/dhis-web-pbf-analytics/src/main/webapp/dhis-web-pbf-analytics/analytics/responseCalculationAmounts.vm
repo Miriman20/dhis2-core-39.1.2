@@ -1,0 +1,43 @@
+[
+#foreach( $pbfCalculation in $pbfCalculations )
+
+#if($memberCount==$foreach.count)
+  {
+    "Мамлакат": "$!{pbfCalculation.getCountryName()}",
+    "Вилоят": "$!{pbfCalculation.getProvinceName()}",
+	"Ноҳия": "$!{pbfCalculation.getDistrictName()}",
+	"Муассиса": "$!{pbfCalculation.getFacilityName()}",
+	"Нишондиҳанда": "$!{pbfCalculation.getIndicatorName()}",
+	"Чоряк": "$!{pbfCalculation.getPeriodName()}",
+	"Моҳи аввал": "$!{pbfCalculation.getMonthOne()}",
+	"Моҳи дуюм": "$!{pbfCalculation.getMonthTwo()}",
+	"Моҳи сеюм": "$!{pbfCalculation.getMonthThree()}",
+	"Шумораи чорякии муассиса": "$!{pbfCalculation.getQuarterQtyFacility()}",
+	"Шумораи чорякии хадамот": "$!{pbfCalculation.getQuarterQtyIntVer()}",
+	"Шумораи чорякии беруна": "$!{pbfCalculation.getQuarterQtyExtVer()}",
+	"Ҳамагӣ балҳои сифат": "$!{pbfCalculation.getQualityScore()}",
+	"Арзиши сатрӣ": "$!{pbfCalculation.getThresholdValue()}",
+	"Арзиш": $!{pbfCalculation.getQuarterQtyIntVerThreshold()}
+  }
+#else 
+  {
+    "Мамлакат": "$!{pbfCalculation.getCountryName()}",
+    "Вилоят": "$!{pbfCalculation.getProvinceName()}",
+	"Ноҳия": "$!{pbfCalculation.getDistrictName()}",
+	"Муассиса": "$!{pbfCalculation.getFacilityName()}",
+	"Нишондиҳанда": "$!{pbfCalculation.getIndicatorName()}",
+	"Чоряк": "$!{pbfCalculation.getPeriodName()}",
+	"Моҳи аввал": "$!{pbfCalculation.getMonthOne()}",
+	"Моҳи дуюм": "$!{pbfCalculation.getMonthTwo()}",
+	"Моҳи сеюм": "$!{pbfCalculation.getMonthThree()}",
+	"Шумораи чорякии муассиса": "$!{pbfCalculation.getQuarterQtyFacility()}",
+	"Шумораи чорякии хадамот": "$!{pbfCalculation.getQuarterQtyIntVer()}",
+	"Шумораи чорякии беруна": "$!{pbfCalculation.getQuarterQtyExtVer()}",
+	"Ҳамагӣ балҳои сифат": "$!{pbfCalculation.getQualityScore()}",
+	"Арзиши сатрӣ": "$!{pbfCalculation.getThresholdValue()}",
+	"Арзиш": $!{pbfCalculation.getQuarterQtyIntVerThreshold()}
+  },
+#end
+  
+#end
+]

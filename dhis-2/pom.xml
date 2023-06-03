@@ -37,6 +37,7 @@
     <module>dhis-web-embedded-jetty</module>
     <module>dhis-test-coverage</module>
     <module>dhis-test-integration</module>
+    <module>dhis-web</module>
   </modules>
 
   <properties>
@@ -944,6 +945,11 @@
       <dependency>
         <groupId>org.hisp.dhis</groupId>
         <artifactId>dhis-service-core</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.hisp.dhis</groupId>
+        <artifactId>dhis-service-pbf</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>

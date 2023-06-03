@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"
+  [<!ENTITY identifiableProperties SYSTEM "classpath://org/hisp/dhis/common/identifiableProperties.hbm">]
+  >
+
+<hibernate-mapping>
+  <class name="org.hisp.dhis.pbf.model.QualityDataElementMapper" table="pbfqualitydemap">
+
+    <id name="id" column="mapingid">
+      <generator class="native" />
+    </id>
+        
+	 <many-to-one name="intVerDataElement" class="org.hisp.dhis.dataelement.DataElement" column="intVerDataElement"
+        lazy="false" />
+        
+	 <many-to-one name="extVerDataElement" class="org.hisp.dhis.dataelement.DataElement" column="extVerDataElement"
+        lazy="false" />
+                
+  </class>
+</hibernate-mapping>

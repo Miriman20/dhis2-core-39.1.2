@@ -1,0 +1,105 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.hisp.dhis</groupId>
+		<artifactId>dhis-web</artifactId>
+		<version>2.41-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>dhis-web-maintenance-pbf</artifactId>
+	<packaging>war</packaging>
+	<name>PBF Admin Panel</name>
+
+	<build>
+		<finalName>dhis-web-maintenance-pbf</finalName>
+	</build>
+
+	<dependencies>
+
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+    </dependency>
+
+		<dependency>
+			<groupId>de.congrace</groupId>
+			<artifactId>exp4j</artifactId>
+			<version>0.3.10</version>
+		</dependency>
+
+<dependency>
+	<groupId>net.sf.jett</groupId>
+	<artifactId>jett-core</artifactId>
+	<version>0.11.0</version>
+</dependency>
+
+<dependency>
+    <groupId>org.jxls</groupId>
+    <artifactId>jxls</artifactId>
+    <version>2.10.0</version>
+</dependency>
+
+<dependency>
+    <groupId>org.jxls</groupId>
+    <artifactId>jxls-poi</artifactId>
+    <version>2.10.0</version>
+</dependency>
+
+<dependency>
+    <groupId>org.jxls</groupId>
+    <artifactId>jxls-jexcel</artifactId>
+    <version>1.0.9</version>
+		        <exclusions>
+                <exclusion>
+                    <groupId>log4j</groupId>
+                    <artifactId>log4j</artifactId>
+                </exclusion>
+            </exclusions>
+</dependency>
+
+<dependency>
+    <groupId>org.apache.poi</groupId>
+    <artifactId>poi</artifactId>
+    <version>3.15</version>
+</dependency>
+
+<!-- jXLS reader-->
+
+<dependency>
+    <groupId>org.jxls</groupId>
+    <artifactId>jxls-reader</artifactId>
+    <version>2.0.6</version>
+</dependency> 
+	
+		<!-- DHIS -->
+
+		<dependency>
+			<groupId>org.hisp.dhis</groupId>
+			<artifactId>dhis-web-commons</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hisp.dhis</groupId>
+			<artifactId>dhis-web-commons-resources</artifactId>
+			<type>war</type>
+		</dependency>
+		<dependency>
+			<groupId>org.hisp.dhis</groupId>
+			<artifactId>dhis-web-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hisp.dhis</groupId>
+			<artifactId>dhis-service-pbf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hisp.dhis</groupId>
+			<artifactId>dhis-service-core</artifactId>
+		</dependency>
+
+	</dependencies>
+
+	<properties>
+		<rootDir>../../</rootDir>
+	</properties>
+</project>

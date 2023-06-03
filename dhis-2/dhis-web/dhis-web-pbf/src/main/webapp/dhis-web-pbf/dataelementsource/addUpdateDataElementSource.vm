@@ -1,0 +1,202 @@
+
+<h3>$i18n.getString( "edit_data_element_source" )</h3>
+<table class="mainPageTable" >
+<thead>
+<th> Data Elements
+</th>
+<th>Categories
+</th>
+<th style="width: 350px;">Actions
+</th>
+</thead>
+<tr>
+<td>
+            <select id="dataElements" size="2" style="height:150px;width: 350px;">
+                #foreach( $dataElement in $members )
+                    <option value="$dataElement.id">$encoder.htmlEncode( $dataElement.name )</option>
+                #end
+            </select>
+</td>
+<td style="width: 350px;">
+            <select id="dataElementCats" size="2" style="height:150px;width: 350px;">
+                    
+            </select>
+</td>
+<td>
+
+<div id="selecteddiv">
+</div>
+
+</td>
+
+</tr>
+
+</table>
+
+
+<div> 
+<textarea name="calculationFormula"  id="calculationFormula" rows=5 cols=100>
+</textarea> 
+</div>
+
+<div>
+
+<input type="button" value="Save" title="$i18n.getString('save')" style="width:50px" onclick="saveSelectCriteria();"/><br/>  
+
+</div>
+
+<div>
+	<ul class="sourcedefsdiv" style="list-style: none;">
+	</ul>
+</div>
+
+<script>
+
+
+
+function saveSelectCriteria(){
+
+    $('#dataElements :selected').each(function(i, selected){
+
+jQuery.ajax({
+   type: "POST",
+   url: "addUpdatedataElementDataSource.action",
+   data: "deid=" + jQuery('#dataElements').val()+"&decoid=" + jQuery('#dataElementCats').val()+ "&calculationFormula=" +jQuery('#calculationFormula').val(),
+   success: function(res){
+  //   alert( "Data Saved: " + res );
+    var pbfDataElements = res.getElementsByTagName( 'pbfDataElements' )[0];
+  var optionsList = res.getElementsByTagName( 'pbfDataElement' );
+  
+ $('.sourcedefsdiv').empty();
+ 
+  for ( var i = 0; i < optionsList.length; i++ )
+  {
+    var pbfDataElement = optionsList[i];
+    var name = pbfDataElement.firstChild.nodeValue;
+    var deid = pbfDataElement.getAttribute( 'deid' );   
+        var decoid = pbfDataElement.getAttribute( 'decoid' ); 
+    
+
+    $('.sourcedefsdiv').append("<li deid="+ deid +"><a href='javascript:removeSourceDef("+ deid +", "+ decoid +")' title='$i18n.getString( 'remove' )'>"+ name + "<img src='../images/delete.png' alt='$i18n.getString( 'remove' )'/></a></li>");
+    
+  }
+
+   }
+ });
+    });
+}
+
+
+
+function getCombos(){
+
+    $('#dataElements :selected').each(function(i, selected){
+
+jQuery.ajax({
+   type: "POST",
+   url: "getOptionCombos.action",
+   data: "dataElementId="+selected.value,
+   success: function(res){
+//     alert( "Data Saved: " + res );
+  var categoryOptions = res.getElementsByTagName( 'categoryOptions' )[0];
+  var optionsList = res.getElementsByTagName( 'categoryOption' );
+
+  var optionComboSelector = document.getElementById( 'dataElementCats' );
+  jQuery('#dataElementCats option').each(function(i, option){ $(option).remove(); });
+  
+  for ( var i = 0; i < optionsList.length; i++ )
+  {
+    var categoryOption = optionsList[i];
+    var name = categoryOption.firstChild.nodeValue;
+    var id = categoryOption.getAttribute( 'id' );   
+        
+    var option = new Option( name, id );
+        
+    optionComboSelector.add( option, null );
+  }
+
+   }
+ });
+    });
+}
+
+
+function getSourceDefs(){
+
+    $('#dataElementCats :selected').each(function(i, selected){
+
+jQuery.ajax({
+   type: "POST",
+   url: "getSourceDefinitions.action",
+   success: function(res){
+//     alert( "Data Saved: " + res );
+
+    var pbfDataElements = res.getElementsByTagName( 'pbfDataElements' )[0];
+  var optionsList = res.getElementsByTagName( 'pbfDataElement' );
+  
+ $('.sourcedefsdiv').empty();
+ 
+  for ( var i = 0; i < optionsList.length; i++ )
+  {
+    var pbfDataElement = optionsList[i];
+    var name = pbfDataElement.firstChild.nodeValue;
+    var deid = pbfDataElement.getAttribute( 'deid' );   
+        var decoid = pbfDataElement.getAttribute( 'decoid' ); 
+    
+
+    $('.sourcedefsdiv').append("<li deid="+ deid +"><a href='javascript:removeSourceDef("+ deid +", "+ decoid +")' title='$i18n.getString( 'remove' )'>"+ name + "<img src='../images/delete.png' alt='$i18n.getString( 'remove' )'/></a></li>");
+    
+  }
+
+   }
+ });
+    });
+}
+
+function removeSourceDef(deid, decoid) {
+
+	jQuery.ajax( {
+		type: "POST",
+		url: "deleteSourceDefinition.action",
+		data: "deid=" + deid + "&decoid=" +decoid,
+		success: function(res) {			
+    var pbfDataElements = res.getElementsByTagName( 'pbfDataElements' )[0];
+  var optionsList = res.getElementsByTagName( 'pbfDataElement' );
+  
+ $('.sourcedefsdiv').empty();
+ 
+  for ( var i = 0; i < optionsList.length; i++ )
+  {
+    var pbfDataElement = optionsList[i];
+    var name = pbfDataElement.firstChild.nodeValue;
+    var deid = pbfDataElement.getAttribute( 'deid' );   
+        var decoid = pbfDataElement.getAttribute( 'decoid' ); 
+    
+
+    $('.sourcedefsdiv').append("<li deid="+ deid +"><a href='javascript:removeSourceDef("+ deid +", "+ decoid +")' title='$i18n.getString( 'remove' )'>"+ name + "<img src='../images/delete.png' alt='$i18n.getString( 'remove' )'/></a></li>");
+    
+  }
+		},
+		error: function(res) {
+			alert("ERROR!");
+		}
+	});
+}
+
+
+jQuery(document).ready( function(){
+        $('#dataElements').dblclick(function() {
+        getCombos();
+        });
+        
+        $('#dataElementCats').dblclick(function() {
+        getSourceDefs();
+        });
+        
+        
+        $('#selectordiv').change(function() {
+        getSelected();
+        });
+    });
+
+</script>

@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+  "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+  "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+	<include file="dhis-web-commons.xml" />
+
+	<package name="dhis-web-pbf-analytics" extends="dhis-web-commons"
+		namespace="/dhis-web-pbf-analytics">
+
+
+<!-- Index -->
+		<action name="index" class="org.hisp.dhis.pbf.analytics.action.NoAction">
+			<result name="success" type="velocity">/main.vm</result>
+			<param name="page">/dhis-web-pbf-analytics/index.vm</param>
+			<param name="menu">/dhis-web-pbf-analytics/menu.vm</param>
+		</action>
+		
+<!-- Excel Reports -->
+
+		 <action name="showQualAnalReportParamsForm" class="org.hisp.dhis.pbf.analytics.excelreports.GetQualityAnaliticsReportParamsAction">
+		      <result name="success" type="velocity">/main.vm</result>
+		      <param name="page">/dhis-web-pbf-analytics/analytics/qualityAnalyticsParamsForm.vm</param>
+		      <param name="menu">/dhis-web-pbf-analytics/submenu.vm</param>
+		      <param name="javascripts">../dhis-web-commons/oust/oust.js,../dhis-web-commons/oust/selectionTreeSelect.js,javascript/dataSetReport.js</param>
+		      <param name="stylesheets"></param>
+		      <param name="requiredAuthorities">F_PERFORM_ANALYSIS</param>
+	    </action>
+
+    <action name="displayQualityAggregationReport" class="org.hisp.dhis.pbf.analytics.excelreports.DisplayQualityAggregationReportAction">
+      	<result name="success" type="stream">
+			  <param name="contentType">application/vnd.ms-excel</param>
+			  <param name="inputName">fileInputStream</param>
+			  <param name="contentDisposition">attachment;filename=${fileName}</param>
+			  <param name="bufferSize">1024</param>
+			  <param name="requiredAuthorities">F_PERFORM_ANALYSIS</param>
+		</result>
+    </action>
+    
+		 <action name="showQuanAnalReportParamsForm" class="org.hisp.dhis.pbf.analytics.excelreports.GetQuantityAnaliticsReportParamsAction">
+		      <result name="success" type="velocity">/main.vm</result>
+		      <param name="page">/dhis-web-pbf-analytics/analytics/quantityAnalyticsParamsForm.vm</param>
+		      <param name="menu">/dhis-web-pbf-analytics/submenu.vm</param>
+		      <param name="javascripts">../dhis-web-commons/oust/oust.js,../dhis-web-commons/oust/selectionTreeSelect.js,javascript/dataSetReport.js</param>
+		      <param name="stylesheets"></param>
+		      <param name="requiredAuthorities">F_PERFORM_ANALYSIS</param>
+	    </action>
+
+    <action name="displayQuantityAggregationReport" class="org.hisp.dhis.pbf.analytics.excelreports.DisplayQuantityAggregationReportAction">
+      	<result name="success" type="stream">
+			  <param name="contentType">application/vnd.ms-excel</param>
+			  <param name="inputName">fileInputStream</param>
+			  <param name="contentDisposition">attachment;filename=${fileName}</param>
+			  <param name="bufferSize">1024</param>
+			  <param name="requiredAuthorities">F_PERFORM_ANALYSIS</param>
+		</result>
+    </action>
+    
+		<action name="exceldownload" class="org.hisp.dhis.pbf.analytics.excelreports.DisplayExcelReport">
+			<result name="success" type="stream">
+			  <param name="contentType">application/vnd.ms-excel</param>
+			  <param name="inputName">fileInputStream</param>
+			  <param name="contentDisposition">attachment;filename=${fileName}</param>
+			  <param name="bufferSize">1024</param>
+			  <param name="requiredAuthorities">F_PERFORM_ANALYSIS</param>
+			</result>
+		</action>
+		
+		<action name="excelmasterchilddownload" class="org.hisp.dhis.pbf.analytics.excelreports.MasterChildHighlightedExcelReport">
+			<result name="success" type="stream">
+			  <param name="contentType">application/vnd.ms-excel</param>
+			  <param name="inputName">fileInputStream</param>
+			  <param name="contentDisposition">attachment;filename=${fileName}</param>
+			  <param name="bufferSize">1024</param>
+			  <param name="requiredAuthorities">F_PERFORM_ANALYSIS</param>
+			</result>
+		</action>
+		
+		<action name="excelfacintvervariation" class="org.hisp.dhis.pbf.analytics.excelreports.FacilityIntVerVariation">
+			<result name="success" type="stream">
+			  <param name="contentType">application/vnd.ms-excel</param>
+			  <param name="inputName">fileInputStream</param>
+			  <param name="contentDisposition">attachment;filename=${fileName}</param>
+			  <param name="bufferSize">1024</param>
+			  <param name="requiredAuthorities">F_PERFORM_ANALYSIS</param>
+			</result>
+		</action>
+		
+		<action name="excelqualityvariation" class="org.hisp.dhis.pbf.analytics.excelreports.IntVerExtVerQualityVariation">
+			<result name="success" type="stream">
+			  <param name="contentType">application/vnd.ms-excel</param>
+			  <param name="inputName">fileInputStream</param>
+			  <param name="contentDisposition">attachment;filename=${fileName}</param>
+			  <param name="bufferSize">1024</param>
+			  <param name="requiredAuthorities">F_PERFORM_ANALYSIS</param>
+			</result>
+		</action>
+	
+		<!-- Analytics -->
+
+<!-- Pivottablejs action -->
+		<action name="showQuantityAnalyticsDataPivot"
+			class="org.hisp.dhis.pbf.analytics.action.NoAction">
+			<result name="success" type="velocity">/main.vm</result>
+			<param name="menu">/dhis-web-pbf-analytics/menu.vm</param>
+			<param name="page">/dhis-web-pbf-analytics/analytics/quantityAnalyticsData.vm</param>
+			<param name="javascripts">javascript/plotly-basic-latest.min.js,
+				javascript/papaparse.min.js, javascript/pivot.js, javascript/plotly_renderers.js, javascript/d3.min.js, javascript/c3.min.js,
+				javascript/c3_renderers.js, javascript/export_renderers.js, javascript/d3_renderers.js, javascript/plotly_renderers.js
+			</param>
+			<param name="stylesheets">style/styles.css, style/c3.min.css, style/pivot.css</param>
+			<param name="requiredAuthorities">F_PERFORM_ANALYSIS</param>
+		</action>
+
+<!-- New OLAP for Accreditation modules-->
+		<action name="showAnalyticalDataPivot"
+			class="org.hisp.dhis.pbf.analytics.action.NoAction">
+			<result name="success" type="velocity">/main.vm</result>
+			<param name="menu">/dhis-web-pbf-analytics/menu.vm</param>
+			<param name="page">/dhis-web-pbf-analytics/analytics/analyticsDataPivot.vm</param>
+			<param name="javascripts">javascript/webdatarocks.toolbar.min.js, javascript/webdatarocks.js, 
+			</param>
+			<param name="stylesheets">style/theme/lightblue/webdatarocks.min.css</param>
+			<param name="requiredAuthorities">F_PERFORM_ANALYSIS</param>
+		</action>
+
+		<action name="showQuantityAnalyticsDataPivotOne"
+			class="org.hisp.dhis.pbf.analytics.action.NoAction">
+			<result name="success" type="velocity">/main.vm</result>
+			<param name="menu">/dhis-web-pbf-analytics/menu2.vm</param>
+			<param name="page">/dhis-web-pbf-analytics/analytics/quantityAnalyticsDataOne.vm</param>
+			<param name="javascripts">javascript/plotly-basic-latest.min.js,
+				javascript/papaparse.min.js, javascript/pivot.js, javascript/plotly_renderers.js, javascript/d3.min.js, javascript/c3.min.js,
+				javascript/c3_renderers.js, javascript/export_renderers.js, javascript/d3_renderers.js, javascript/plotly_renderers.js
+			</param>
+			<param name="stylesheets">style/styles.css, style/c3.min.css, style/pivot.css</param>
+		</action>
+
+		<action name="showQuantityAnalyticsDataPivotTwo"
+			class="org.hisp.dhis.pbf.analytics.action.NoAction">
+			<result name="success" type="velocity">/main.vm</result>
+			<param name="menu">/dhis-web-pbf-analytics/menu2.vm</param>
+			<param name="page">/dhis-web-pbf-analytics/analytics/quantityAnalyticsDataTwo.vm</param>
+			<param name="javascripts">javascript/plotly-basic-latest.min.js,
+				javascript/papaparse.min.js, javascript/pivot.js, javascript/plotly_renderers.js, javascript/d3.min.js, javascript/c3.min.js,
+				javascript/c3_renderers.js, javascript/export_renderers.js, javascript/d3_renderers.js, javascript/plotly_renderers.js
+			</param>
+			<param name="stylesheets">style/styles.css, style/c3.min.css, style/pivot.css</param>
+		</action>
+
+		<action name="showQuantityAnalyticsDataPivotThree"
+			class="org.hisp.dhis.pbf.analytics.action.NoAction">
+			<result name="success" type="velocity">/main.vm</result>
+			<param name="menu">/dhis-web-pbf-analytics/menu2.vm</param>
+			<param name="page">/dhis-web-pbf-analytics/analytics/quantityAnalyticsDataThree.vm</param>
+			<param name="javascripts">javascript/plotly-basic-latest.min.js,
+				javascript/papaparse.min.js, javascript/pivot.js, javascript/plotly_renderers.js, javascript/d3.min.js, javascript/c3.min.js,
+				javascript/c3_renderers.js, javascript/export_renderers.js, javascript/d3_renderers.js, javascript/plotly_renderers.js
+			</param>
+			<param name="stylesheets">style/styles.css, style/c3.min.css, style/pivot.css</param>
+		</action>
+
+		<action name="showQuantityAnalyticsDataPivotFour"
+			class="org.hisp.dhis.pbf.analytics.action.NoAction">
+			<result name="success" type="velocity">/main.vm</result>
+			<param name="menu">/dhis-web-pbf-analytics/menu2.vm</param>
+			<param name="page">/dhis-web-pbf-analytics/analytics/quantityAnalyticsDataFour.vm</param>
+			<param name="javascripts">javascript/plotly-basic-latest.min.js,
+				javascript/papaparse.min.js, javascript/pivot.js, javascript/plotly_renderers.js, javascript/d3.min.js, javascript/c3.min.js,
+				javascript/c3_renderers.js, javascript/export_renderers.js, javascript/d3_renderers.js, javascript/plotly_renderers.js
+			</param>
+			<param name="stylesheets">style/styles.css, style/c3.min.css, style/pivot.css</param>
+		</action>
+
+		<action name="showQuantityAnalyticsDataPivotFive"
+			class="org.hisp.dhis.pbf.analytics.action.NoAction">
+			<result name="success" type="velocity">/main.vm</result>
+			<param name="menu">/dhis-web-pbf-analytics/menu2.vm</param>
+			<param name="page">/dhis-web-pbf-analytics/analytics/quantityAnalyticsDataFive.vm</param>
+			<param name="javascripts">javascript/plotly-basic-latest.min.js,
+				javascript/papaparse.min.js, javascript/pivot.js, javascript/plotly_renderers.js, javascript/d3.min.js, javascript/c3.min.js,
+				javascript/c3_renderers.js, javascript/export_renderers.js, javascript/d3_renderers.js, javascript/plotly_renderers.js
+			</param>
+			<param name="stylesheets">style/styles.css, style/c3.min.css, style/pivot.css</param>
+		</action>
+
+		<action name="showQuantityAnalyticsDataPivotSix"
+			class="org.hisp.dhis.pbf.analytics.action.NoAction">
+			<result name="success" type="velocity">/main.vm</result>
+			<param name="menu">/dhis-web-pbf-analytics/menu2.vm</param>
+			<param name="page">/dhis-web-pbf-analytics/analytics/quantityAnalyticsDataSix.vm</param>
+			<param name="javascripts">javascript/plotly-basic-latest.min.js,
+				javascript/papaparse.min.js, javascript/pivot.js, javascript/plotly_renderers.js, javascript/d3.min.js, javascript/c3.min.js,
+				javascript/c3_renderers.js, javascript/export_renderers.js, javascript/d3_renderers.js, javascript/plotly_renderers.js
+			</param>
+			<param name="stylesheets">style/styles.css, style/c3.min.css, style/pivot.css</param>
+		</action>
+		
+		<!-- get actual anaytics data -->
+			<!-- 
+		<action name="getAnalyticsData" class="org.hisp.dhis.pbf.analytics.reportperiod.ShowAnalyticsForUserAction">
+		 <result name="success" type="velocity-json">/dhis-web-pbf-analytics/analytics/responseAnalyticsData.vm
+			</result> 	
+			<result name="success" type="velocity-json">
+		        <param name="contentType">application/json</param>
+		        <param name="root">list</param>
+			</result>
+			<param name="javascripts"></param>
+			<param name="requiredAuthorities">F_PERFORM_ANALYSIS</param>
+		</action>
+				-->
+	
+    <action name="getUserAnalyticsData" class="org.hisp.dhis.pbf.analytics.reportperiod.ShowAnalyticsForUserAction">
+      <result name="success" type="velocity-json">/dhis-web-pbf-analytics/analytics/responseAnalyticsData.vm</result>
+    </action>
+	
+    <action name="getUserQualityScoreAnalyticsData" class="org.hisp.dhis.pbf.analytics.reportperiod.ShowAnalyticsQualityScoreForUserAction">
+      <result name="success" type="velocity-json">/dhis-web-pbf-analytics/analytics/responseQualityScoresAnalyticsData.vm</result>
+    </action>
+		
+    <action name="getCountryAnalyticsData" class="org.hisp.dhis.pbf.analytics.reportperiod.ShowAnalyticsForCountryAction">
+      <result name="success" type="velocity-json">/dhis-web-pbf-analytics/analytics/responseAnalyticsData.vm</result>
+    </action>
+	
+	<!-- To present calculation amounts per indicator with quality bonus -->
+	
+    <action name="getCalculationAmounts" class="org.hisp.dhis.pbf.analytics.reportperiod.ShowCalculationAmountsAction">
+      <result name="success" type="velocity-json">/dhis-web-pbf-analytics/analytics/responseCalculationAmounts.vm</result>
+    </action>
+    
+		<action name="showReportPeriodForQuantityAnalytics"
+			class="org.hisp.dhis.pbf.analytics.reportperiod.ShowReportPeriodAction">
+			<result name="success" type="velocity">/main.vm</result>
+			<param name="menu">/dhis-web-pbf-analytics/menu.vm</param>
+			<param name="page">/dhis-web-pbf-analytics/analytics/quantityAnalyticsReportPeriod.vm</param>
+			<param name="javascripts">
+				javascript/dataElementGroup.js
+			</param>
+			<param name="stylesheets">style/styles.css</param>
+			<param name="requiredAuthorities">F_PERFORM_ANALYSIS</param>
+		</action>
+		
+		<action name="showQuantityAnalyticsDetails" class="org.hisp.dhis.pbf.analytics.reportperiod.ShowAnalyticsReportsAction">
+			<result name="success" type="velocity">/main.vm</result>
+			<param name="menu">/dhis-web-pbf-analytics/menu.vm</param>
+			<param name="page">/dhis-web-pbf-analytics/analytics/quantityAnalytics.vm</param>
+			<param name="javascripts">
+				javascript/dataElementGroup.js
+			</param>
+			<param name="stylesheets">style/styles.css</param>
+			<param name="requiredAuthorities">F_PERFORM_ANALYSIS</param>
+		</action>
+		
+		<action name="computeQuantityAnalyticsUserUnits"
+			class="org.hisp.dhis.pbf.analytics.reportperiod.QuantityAnalyticsDetailsUserUnitsAction">
+			<result name="success" type="redirect">showReportPeriodForQuantityAnalytics.action</result>
+			<param name="requiredAuthorities">F_PERFORM_ANALYSIS</param>
+		</action>
+
+		<action name="computeQuantityAnalyticsSingleUnit"
+			class="org.hisp.dhis.pbf.analytics.reportperiod.QuantityAnalyticsDetailsSingleUnitAction">
+			<result name="success" type="redirect">showReportPeriodForQuantityAnalytics.action</result>
+			<param name="requiredAuthorities">F_PERFORM_ANALYSIS</param>
+		</action>
+
+		<action name="showReportPeriodForQualityAnalytics"
+			class="org.hisp.dhis.pbf.analytics.reportperiod.ShowReportPeriodAction">
+			<result name="success" type="velocity">/main.vm</result>
+			<param name="menu">/dhis-web-pbf-analytics/menu.vm</param>
+			<param name="page">/dhis-web-pbf-analytics/analytics/qualityAnalyticsReportPeriod.vm</param>
+			<param name="javascripts">
+				javascript/dataElementGroup.js
+			</param>
+			<param name="stylesheets">style/styles.css</param>
+			<param name="requiredAuthorities">F_PERFORM_ANALYSIS</param>
+		</action>
+		
+		<action name="showQualityAnalyticsDetails" class="org.hisp.dhis.pbf.analytics.reportperiod.ShowAnalyticsReportsAction">
+			<result name="success" type="velocity">/main.vm</result>
+			<param name="menu">/dhis-web-pbf-analytics/menu.vm</param>
+			<param name="page">/dhis-web-pbf-analytics/analytics/qualityAnalytics.vm</param>
+			<param name="javascripts">
+				javascript/dataElementGroup.js
+			</param>
+			<param name="stylesheets">style/styles.css</param>
+			<param name="requiredAuthorities">F_PERFORM_ANALYSIS</param>
+		</action>
+
+<!-- Pivottablejs action -->
+		<action name="showQualityAnalyticsDataPivot"
+			class="org.hisp.dhis.pbf.analytics.action.NoAction">
+			<result name="success" type="velocity">/main.vm</result>
+			<param name="menu">/dhis-web-pbf-analytics/menu.vm</param>
+			<param name="page">/dhis-web-pbf-analytics/analytics/qualityAnalyticsData.vm</param>
+			<param name="javascripts">javascript/plotly-basic-latest.min.js,
+				javascript/papaparse.min.js, javascript/pivot.js, javascript/plotly_renderers.js, javascript/d3.min.js, javascript/c3.min.js,
+				javascript/c3_renderers.js, javascript/export_renderers.js, javascript/d3_renderers.js, javascript/plotly_renderers.js
+			</param>
+			<param name="stylesheets">style/styles.css, style/c3.min.css, style/pivot.css</param>
+			<param name="requiredAuthorities">F_PERFORM_ANALYSIS</param>
+		</action>
+
+		<action name="showCalculationAmountsPivot"
+			class="org.hisp.dhis.pbf.analytics.action.NoAction">
+			<result name="success" type="velocity">/main.vm</result>
+			<param name="menu">/dhis-web-pbf-analytics/menu.vm</param>
+			<param name="page">/dhis-web-pbf-analytics/analytics/calculationAmounts.vm</param>
+			<param name="javascripts">javascript/plotly-basic-latest.min.js,
+				javascript/papaparse.min.js, javascript/pivot.js, javascript/plotly_renderers.js, javascript/d3.min.js, javascript/c3.min.js,
+				javascript/c3_renderers.js, javascript/export_renderers.js, javascript/d3_renderers.js, javascript/plotly_renderers.js
+			</param>
+			<param name="stylesheets">style/styles.css, style/c3.min.css, style/pivot.css</param>
+			<param name="requiredAuthorities">F_PERFORM_ANALYSIS</param>
+		</action>
+
+    <action name="getCountryQualityAnalyticsData" class="org.hisp.dhis.pbf.analytics.reportperiod.ShowQualityAnalyticsAction">
+      <result name="success" type="velocity-json">/dhis-web-pbf-analytics/analytics/responseQualityAnalyticsData.vm</result>
+    </action>
+    
+    				
+		<action name="computeQualityAnalyticsUserUnits"
+			class="org.hisp.dhis.pbf.analytics.reportperiod.QualityAnalyticsDetailsUserUnitsAction">
+			<result name="success" type="redirect">showReportPeriodForQualityAnalytics.action</result>
+			<param name="requiredAuthorities">F_PERFORM_ANALYSIS</param>
+		</action>
+		
+		<action name="computeQualityAnalyticsSingleUnit"
+			class="org.hisp.dhis.pbf.analytics.reportperiod.QualityAnalyticsDetailsSingleUnitAction">
+			<result name="success" type="redirect">showReportPeriodForQualityAnalytics.action</result>
+			<param name="requiredAuthorities">F_PERFORM_ANALYSIS</param>
+		</action>
+		
+	</package>
+</struts>
